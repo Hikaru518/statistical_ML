@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
 class ProbabilityModel:
 
@@ -17,18 +16,19 @@ class UnivariateNormal(ProbabilityModel):
     # Initializes a univariate normal probability model object
     # parameterized by mu and (a positive) sigma
     def __init__(self,mu,sigma):
-        self.Mu=Mu
-        self.Sigma=Sigma
+        self.mu= mu
+        self.sigma= sigma
 
     def sample(self):
     	sampleRes = 0
     	Num_UnifromD = 25
+    	# According to Central Limit Theorem
     	# Use the sum of 25 i.i.d uniform distribution to approximate the normal distribution 
     	for i in xrange(Num_UnifromD): 
     		randNum = np.random.uniform(-np.sqrt(3),np.sqrt(3))
     		sampleRes = sampleRes + randNum
     	sampleRes = np.sqrt(Num_UnifromD)*sampleRes
-    	sampleRes = sampleRes*self.sigma + self.Mu
+    	sampleRes = sampleRes*self.sigma + self.mu
     	return sampleRes
 
 
@@ -46,8 +46,10 @@ class MultiVariateNormal(ProbabilityModel):
         self.Sigma=Sigma
 
     def sample(self):
-    	pass
-
+    	D = len(self.Sigma)
+    	gaussianList = [UnivariateNormal(0,1).sample() for i in xrange(D)]
+    	sampleRes = self.Mu + np.dot(self.Sigma, gaussianList)
+        return sampleRes
 
 
 # The sample space of this probability model is the finite discrete set {0..k-1}, and 
@@ -80,5 +82,17 @@ class MixtureModel(ProbabilityModel):
     # atomic probabilities vector ap (numpy.array of size k) and by the tuple of 
     # probability models pm
     def __init__(self,ap,pm):
-        pass
+        self.ap = ap
+        self.pm = pm
+
+    def sample(self):
+    	k = len(self.ap)
+    	sampleRes = [self.ap[i]*self.pm[i].sample() for i in xrange(k)]
+    	sampleRes = sum(sampleRes)
+    	return sampleRes
+
+    
+
+
+        
 
