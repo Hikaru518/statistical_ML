@@ -1,0 +1,271 @@
+\documentclass[]{book}
+
+%These tell TeX which packages to use.
+\usepackage{array,epsfig}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsxtra}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{color}
+
+%Here I define some theorem styles and shortcut commands for symbols I use often
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem*{rmk}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem*{joke}{Joke}
+\newtheorem{ex}{Example}
+\newtheorem*{soln}{Solution}
+\newtheorem{prop}{Proposition}
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\graph}{\mathrm{graph}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\Z}{\bb{Z}}
+\newcommand{\Q}{\bb{Q}}
+\newcommand{\R}{\bb{R}}
+\newcommand{\C}{\bb{C}}
+\newcommand{\N}{\bb{N}}
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\m}{\mathbf{m}}
+\newcommand{\MM}{\mathscr{M}}
+\newcommand{\HH}{\mathscr{H}}
+\newcommand{\Om}{\Omega}
+\newcommand{\Ho}{\in\HH(\Om)}
+\newcommand{\bd}{\partial}
+\newcommand{\del}{\partial}
+\newcommand{\bardel}{\overline\partial}
+\newcommand{\textdf}[1]{\textbf{\textsf{#1}}\index{#1}}
+\newcommand{\img}{\mathrm{img}}
+\newcommand{\ip}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\inter}[1]{\mathrm{int}{#1}}
+\newcommand{\exter}[1]{\mathrm{ext}{#1}}
+\newcommand{\cl}[1]{\mathrm{cl}{#1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\vol}{\mathrm{vol}}
+\newcommand{\cnt}{\mathrm{ct}}
+\newcommand{\osc}{\mathrm{osc}}
+\newcommand{\LL}{\mathbf{L}}
+\newcommand{\UU}{\mathbf{U}}
+\newcommand{\support}{\mathrm{support}}
+\newcommand{\AND}{\;\wedge\;}
+\newcommand{\OR}{\;\vee\;}
+\newcommand{\Oset}{\varnothing}
+\newcommand{\st}{\ni}
+\newcommand{\wh}{\widehat}
+
+%Pagination stuff.
+\setlength{\topmargin}{-.3 in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{9.in}
+\setlength{\textwidth}{6.5in}
+\pagestyle{empty}
+
+
+
+\begin{document}
+
+
+\begin{center}
+{\Large COMP 540 \hspace{0.5cm} HW 1}\\
+\textbf{Peiguang Wang, Xinran Zhou}\\ %You should put your name here
+Due: 1/18/2018 %You should write the date here.
+\end{center}
+
+\vspace{0.2 cm}
+
+
+\subsection*{Part 0: Background refresher}
+
+%% Problem 1
+\begin{enumerate}
+\item\label{norms}
+Generate different distributions from uniform distribution:
+\begin{enumerate}
+	\item	Plot the histogram of a categorical distribution with probabilities [0.2,0.4,0.3,0.1].
+	\item	Plot the univariate normal distribution with mean of 10 and standard deviation of 1.
+	\item	Produce a scatter plot of the samples for a 2-D Gaussian with mean at [1,1] and a covariance matrix [[1,0.5],[0.5,1]]
+	\item	Test your mixture sampling code by writing a function that implements an equal weighted mixture of four Gaussians in 2 dimensions, centered at $(\pm 1; \pm 1)$ and having covariance $I$. Estimate the probability that a sample from this distribution lies within the unit circle centered at (0.1, 0.2).
+	
+\end{enumerate}
+
+%% Problem 2
+\item	Prove that the sum of two independent Poisson random variables is also a Poisson random variable.
+\begin{proof}
+	The characteristic function of a Poisson random variable is
+	$$\varPhi _1(u) = e^{\lambda _1 (e^{iu}-1)}$$
+	
+	Let $X_1$ and $X_2$ denote two independent Poisson random variables. Let $X=X_1+X_2$
+	
+	Let $\varPhi _1(u)$ and $\varPhi _2(u)$ denote the characteristic functions of $X_1$ and $X_2$:
+	$$\varPhi _1(u) = e^{\lambda _1 (e^{iu}-1)}$$
+	$$\varPhi _2(u) = e^{\lambda _2 (e^{iu}-1)}$$
+	
+	Let $\varPhi (u)$ denote the characteristic functions of $X$. Since $X=X_1 + X_2$, we have:
+	$$\varPhi (u) = \varPhi _1(u) \varPhi _2(u)=e^{\lambda _1 (e^{iu}-1)}e^{\lambda _2 (e^{iu}-1)}$$
+	Simplify the equation above,
+	$$\varPhi (u) = e^{(\lambda _1 + \lambda _2) ( \frac{\lambda_1}{\lambda_1 + \lambda_2}e^{iu} + \frac{\lambda_2}{\lambda_1 + \lambda_2}e^{iu}) - 1 }. $$
+	That is
+	$$\varPhi (u) = e^{(\lambda_1 + \lambda_2)  (e^{iu}-1)}. $$
+	Comparing with the characteristic function of Poisson distribution, we can see that X is also a Poisson random variable.
+\end{proof}
+
+%% Problem 3
+\item	Let $X_0$ and $X_1$ be continuous random variables. Show that if
+	$$P(X_0=x_0) = \alpha_0	e^{-\frac{(x_0-\mu_0)^2}{2 \sigma_0^2}}$$
+	$$P(X_1=x_1|X_0=x_0) = \alpha	e^{-\frac{(x_1-x_0)^2}{2 \sigma^2}}$$
+there exists $\alpha_1$, $\mu_1$ and $\sigma_1$ such that
+$$P(X_1=x_1) = \alpha_1	e^{-\frac{(x_1-\mu_1)^2}{2 \sigma_1^2}}$$	
+Write down expressions for these quantities in terms of $\alpha_0$, $\alpha$, $\mu_0$, $\sigma_0$ and $\sigma$.
+
+\begin{soln}
+	If X,Y are both Gaussian random variable, then
+	$$Y|X=x\sim N\left(\mu_Y+\rho \dfrac{\sigma_Y}{\sigma_X}(X-\mu_X),\quad \sigma^2_Y(1-\rho^2)\right)$$ 
+	where $\mu_X$, $\mu_Y$ are mean of $X$ and $Y$; $\sigma_X^2$, $\sigma_Y^2$ are variance of $X$ and $Y$; $\rho$ is the correlation coefficient between $X$ and $Y$.
+	
+	According to the problem, $X_0$, $X_1$ and $X_1 | X_0$ are all Gaussian. So we have the following equations:
+	$$ \left\{
+	\begin{aligned}
+	\mu_1 + \rho \frac{\sigma_1}{\sigma_0}(x_0 - \mu_0) & =  x_0 ,   for \; all \; x_0 \\
+	\sigma_1^2  (1-\rho^2) & =  \sigma^2 
+	\end{aligned} \right. $$
+	Solve the equation, then $\sigma_1^2 = \sigma^2 + \sigma_0^2$, $\mu_1 = -\mu_0$. 
+	And since $\alpha_1 = \frac{1}{\sqrt{2 \pi} \sigma_1}$, we have 
+	$$\alpha_1 = \sqrt{ \frac{1}{(1/\alpha)^2 + (1/\alpha_0)^2}  } $$.
+	
+\end{soln}
+
+%% Problem 4
+\item	Find the eigenvalues and eigenvectors of the following 2 $\times$ 2 matrix $A$.
+$$A = \left({
+\begin{matrix}
+
+13 & 5 \\ 
+2 & 4
+\end{matrix}
+}\right) $$
+
+\begin{soln}
+	Let $\lambda$ and \boldmath $x$ \unboldmath denote the eigenvalue and eigenvector of A. According to the definition of eigenvalue,
+	$$A \boldsymbol{x} = \lambda \boldsymbol{x} $$
+	Solve the equation to get eigenvalues
+	$$ |A-\lambda I| = 0 $$
+	That is,
+	$$\lambda ^2 -14\lambda +42 = 0$$
+	A has two eigenvalues: $\lambda_1 = 14$, $\lambda_2 = 3$.
+	
+	When $\lambda$ = 14,
+	$$(A- \lambda I) \boldsymbol{x}  = \left( {\begin{matrix}
+	-1 & 5 \\ 
+	2 & -10
+	\end{matrix} }\right) \boldsymbol{x} = 0 $$
+	$$\boldsymbol{x} = \left({\begin{matrix}
+		5 & 1
+		\end{matrix} }\right) ^ T $$
+	When $\lambda$ = 3,
+	$$(A- \lambda I) \boldsymbol{x}  = \left( {\begin{matrix}
+		10 & 5 \\ 
+		2 & 1
+		\end{matrix} }\right) \boldsymbol{x} = 0 $$
+	$$\boldsymbol{x} = \left({\begin{matrix}
+		1 & -2
+		\end{matrix} }\right) ^ T $$
+	
+	In summary, A has two eigenvalues, $\lambda_1 = 14$, $\lambda_2 = 3$. The corresponding eigenvectors are $\boldsymbol{x_1} = \left({\begin{matrix}
+		5 & 1
+		\end{matrix} }\right) ^ T $ and $\boldsymbol{x_2} = \left({\begin{matrix}
+		1 & -2
+		\end{matrix} }\right) ^ T $.
+	
+\end{soln}
+
+%% Problem 5
+\item	Provide one example for each of the following cases, where A and B are 2 × 2 matrices.
+\begin{enumerate}
+	\item  $(A + B)^2 \neq A^2 + 2AB + B^2$
+	\item  $AB = 0, A \neq 0, B \neq 0$
+\end{enumerate}
+
+\begin{soln}
+	\begin{enumerate}
+		\item one example that satisfies (a) is:
+		$$A=\left({\begin{matrix}
+			0 & 0 \\ 
+			0 & 1
+			\end{matrix} }\right), 
+		B = \left({\begin{matrix}
+			0 & 1 \\ 
+			0 & 0
+			\end{matrix} }\right)$$
+		Calculate left,
+		$$left = (A+B)^2 = \left({\begin{matrix}
+			0 & 1 \\ 
+			0 & 0
+			\end{matrix} }\right) \left({\begin{matrix}
+			0 & 1 \\ 
+			0 & 0
+			\end{matrix} }\right) = \left({\begin{matrix}
+			0 & 1 \\ 
+			0 & 1
+			\end{matrix} }\right)$$
+		Calculate right,
+		$$right = A^2 + 2AB + B^2 = \left({\begin{matrix}
+			0 & 0 \\ 
+			0 & 1
+			\end{matrix} }\right) + \boldsymbol{0} + \boldsymbol{0} = \left({\begin{matrix}
+			0 & 0 \\ 
+			0 & 1
+			\end{matrix} }\right)$$
+		And $left \neq right$
+		
+		\item 	one example that satisfies (b) is:
+		$$A=\left({\begin{matrix}
+			0 & 0 \\ 
+			0 & 1
+			\end{matrix} }\right), 
+		B = \left({\begin{matrix}
+			0 & 1 \\ 
+			0 & 0
+			\end{matrix} }\right)$$
+		where $A\neq 0$, and $B \neq 0$. Calculate $AB$,
+		$$AB = \left({\begin{matrix}
+			0 & 0 \\ 
+			0 & 1
+			\end{matrix} }\right) \left({\begin{matrix}
+			0 & 1 \\ 
+			0 & 0
+			\end{matrix} }\right) = \boldsymbol{0} $$		
+	\end{enumerate}
+\end{soln}
+
+\item Let $u$ denote a real vector normalized to unit length. That is, $u^T u = 1$. Show that
+$$A = I - 2 u u^T $$
+is orthogonal, i.e., $A^T A = 1$.
+\begin{proof}
+	Derive from left,
+	$$A^T A = (I-2u u^T)^T(I-2u u^T) =(I-2u u^T)(I-2u u^T) = I-2u u^T - 2u u^T + 4 u u^T = I$$
+	So $left = right$.	
+\end{proof}
+
+\end{enumerate}
+
+\subsection*{Part 1: Locally weighted linear regression}
+
+\begin{enumerate}
+	\item s
+\end{enumerate}
+
+
+
+
+
+\end{document}
+
+

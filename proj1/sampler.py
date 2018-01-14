@@ -27,7 +27,7 @@ class UnivariateNormal(ProbabilityModel):
     	for i in xrange(Num_UnifromD): 
     		randNum = np.random.uniform(-np.sqrt(3),np.sqrt(3))
     		sampleRes = sampleRes + randNum
-    	sampleRes = np.sqrt(Num_UnifromD)*sampleRes
+    	sampleRes = sampleRes/np.sqrt(Num_UnifromD)
     	sampleRes = sampleRes*self.sigma + self.mu
     	return sampleRes
 
@@ -86,9 +86,8 @@ class MixtureModel(ProbabilityModel):
         self.pm = pm
 
     def sample(self):
-    	k = len(self.ap)
-    	sampleRes = [self.ap[i]*self.pm[i].sample() for i in xrange(k)]
-    	sampleRes = sum(sampleRes)
+    	i = Categorical(self.ap).sample()
+    	sampleRes = self.pm[i].sample()
     	return sampleRes
 
     

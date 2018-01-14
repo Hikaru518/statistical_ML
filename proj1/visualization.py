@@ -6,7 +6,7 @@ from sampler import *
 N = 10000 # experiment times
 
 # Categorical Example
-ap = [0.2,0.3,0.4,0.1]
+ap = [0.2,0.4,0.3,0.1]
 bins = [0,1,2,3,4]
 C = Categorical(ap)
 sampleList = []
@@ -20,7 +20,7 @@ plt.grid(True)
 plt.show()
 
 # Univariate normal distribution Example
-mu = 10
+mu = 0
 sigma = 1
 G = UnivariateNormal(mu,sigma)
 sampleList = []
