@@ -41,7 +41,7 @@ class LinearRegressor_Multi:
             # Update the parameters using the gradient and the learning rate.       #
             #   One line of code expected
             #########################################################################
-
+            self.theta -= learning_rate*grad
 
             #########################################################################
             #                       END OF YOUR CODE                                #
@@ -86,7 +86,7 @@ class LinearRegressor_Multi:
         # Implement this method. Store the predicted outputs in y_pred.           #
         #  One line of code expected                                              #
         ###########################################################################
-
+        y_pred = np.dot(X, self.theta)
 
         ###########################################################################
         #                           END OF YOUR CODE                              #
@@ -104,7 +104,7 @@ class LinearRegressor_Multi:
         #  One line of code expected                                              #
         ###########################################################################
 
-        theta_n = np.zeros((X.shape[1],))
+        theta_n = np.dot(np.dot(np.linalg.inv(np.dot(X.transpose(),X)),X.transpose()),y)
 
         ###########################################################################
 
@@ -130,8 +130,9 @@ class LinearReg_SquaredLoss(LinearRegressor_Multi):
         # Calculate J (loss) and grad (gradient) wrt to X,y, and self.theta.      #
         #  2-3 lines of code expected                                             #
         ###########################################################################
-
-
+        err = np.dot(X, self.theta)-y
+        J = np.sum(0.5*np.square(err)/len(y))
+        grad = np.dot(X.T, err)/len(y)
 
         ###########################################################################
         #                           END OF YOUR CODE                              #
