@@ -36,7 +36,7 @@ def feature_normalize(X):
 #     X: N x D where N is the number of rows and D is the number of         #
 #        features                                                           #
 #     y: vector of length N which are values corresponding to X             #
-#     Xval: M x D where N is the number of rows and D is the number of      #
+#     Xval: N x D where N is the number of rows and D is the number of      #
 #           features                                                        #
 #     yval: vector of length N which are values corresponding to Xval       #
 #     reg: regularization strength (float)                                  #
@@ -55,8 +55,14 @@ def learning_curve(X,y,Xval,yval,reg):
     # TODO: compute error_train and error_val                                 #
     # 7 lines of code expected                                                #
     ###########################################################################
-
-
+  
+    reglinear_reg_lc = RegularizedLinearReg_SquaredLoss()
+    for i in xrange(num_examples):
+        X_i = X[:i+1]; y_i = y[:i+1]
+        theta_i = reglinear_reg_lc.train(X_i,y_i,reg=0.0,num_iters=1000)
+        error_train[i] = reglinear_reg_lc.loss(theta_i,X_i,y_i,0)
+        error_val[i] = reglinear_reg_lc.loss(theta_i,Xval,yval,0)
+    
 
     ###########################################################################
 
