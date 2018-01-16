@@ -133,9 +133,12 @@ Write down expressions for these quantities in terms of $\alpha_0$, $\alpha$, $\
 	According to the problem, $X_0$, $X_1$ and $X_1 | X_0$ are all Gaussian. So we have the following equations:
 	$$ \left\{
 	\begin{aligned}
-	\mu_1 + \rho \frac{\sigma_1}{\sigma_0}(x_0 - \mu_0) & =  x_0 ,   for \; all \; x_0 \\
+	\mu_1 + \rho \frac{\sigma_1}{\sigma_0}(x_0 - \mu_0) & =  x_0 ,   for \; all \; x_0 \\ 
 	\sigma_1^2  (1-\rho^2) & =  \sigma^2 
-	\end{aligned} \right. $$
+	\end{aligned} 
+	\right.
+	$$
+
 	Solve the equation, then $\sigma_1^2 = \sigma^2 + \sigma_0^2$, $\mu_1 = -\mu_0$. 
 	And since $\alpha_1 = \frac{1}{\sqrt{2 \pi} \sigma_1}$, we have 
 	$$\alpha_1 = \sqrt{ \frac{1}{(1/\alpha)^2 + (1/\alpha_0)^2}  } $$.
@@ -256,13 +259,103 @@ is orthogonal, i.e., $A^T A = 1$.
 
 \end{enumerate}
 
+%% part1
 \subsection*{Part 1: Locally weighted linear regression}
-
+%% part1 problem 1
 \begin{enumerate}
-	\item s
+	\item Show that $J(\theta)$ can be written in the form
+	$$J(\theta)=(X \theta - y)^T W (X \theta - y)$$
+	for an appropriate diagonal matrix $W$, where $X$ is the $m \times d$ input matrix and y is a $m \times 1$ vector denoting the associated outputs. State clearly what $W$ is.
+\begin{proof}
+	We know that $J(\theta)$ can also be written as 
+	$$J(\theta)=\frac{1}{2} \sum_{i=1}^{m} w^{(i)} (\theta^T x^{(i)} - y^{(i)})^2$$
+	where $x^{(i)}$ is $d \times 1$ vector and $\theta$ is a $d \times 1$ vector. We consider each row of the matrix $X$ as as a $1 \times d$vector $x^i$, so we can write $X = [x^1, x^2, ..., x^m]^T$. So
+	$$J(\theta)=(X \theta - y)^T W (X \theta - y)
+	=[x^1 \theta - y^1, x^2 \theta - y^2,...,x^m \theta - y^m] W [x^1 \theta - y^1, x^2 \theta - y^2,...,x^m \theta - y^m]^T$$
+	So $W$ is a $m \times m$ diagonal matrix
+	$$W=\left(\begin{matrix}
+	2 w^{(1)} & 0 & 0 & 0 \\ 
+		0 & 2 w^{(2)} & 0 & 0 \\ 
+		0 & 0 & ... & 0  \\ 
+		0 & 0 & 0 & 2 w^{(m)}
+	
+	\end{matrix}\right)$$ 
+\end{proof}
+	
+%%part 1 problem 2
+	\item If all the $w^{(i)}$'s are equal to 1, the normal equation to solve for the parameter $\theta$ is:
+	$$X^T X \theta = X^T y$$
+	and the value of $\theta$ that minimizes $J(\theta)$ is $(X^T X)^{-1} X^T y$. By computing the derivative of the weighted $J(\theta)$ and setting it equal to zero, generalized the normal equation to the weighted setting and solve for $\theta$ in closed form in terms of $W$, $X$ and $y$.
+\begin{proof}
+	$$J(\theta)=(X \theta - y)^T W (X \theta - y)=\theta^T X^T W X \theta^T - \theta^T X^T W y - y^T W X \theta + y^T W y$$
+	Compute the derivative of $J(\theta)$
+	$$\frac{\partial{J(\theta)}}{\partial(\theta)}=2 X^T W X \theta -X^T W y - X^T W^T y$$
+	Since $W$ is a diagonal matirx $W = W^T$, the equation can be written as
+	$$\frac{\partial{J(\theta)}}{\partial(\theta)} = 2 X^T W X \theta -2 X^T W y$$
+	By setting it equal to zero, we can find the value of $\theta$ that minimizes $J(\theta)$, the equation is :
+	$$X^T W X \theta = X^T W y $$
+	So the value of $\theta$ in form in terms of $W$, $X$ and $y$ is $(X^T W X)^{-1} X^T W y$.
+\end{proof} 
+
+%% part 1 problem 3
+	\item To predict the target value for an input vector $x$, one choice for the weighting function $w^{(i)}$ is:
+	$$w^{(i)}= \exp({-\frac{(x -x^{(i)})^T (x-x^{(i)})}{2 \tau^2}})$$
+	%% big 
+	Points near $x$ are weighted more heavily than points far away from $x$. The parameter $\tau$ is a band width defining the sphere of influence around $x$. Note how the weights are defined by the input $x$. Write down an algorithm for calculating $\theta$ by batch gradient descent for locally weighted linear regression. Is locally weighted linear regression a parametric or a non-parametric method?
 \end{enumerate}
 
+%%part 2 
+\subsection*{Part 2: Properties of the linear regression estimator}
 
+\begin{enumerate}
+%% part 2 problem 1
+	\item Show that $E[\theta]= \theta^*$ for the least squares estimator.
+	
+\begin{proof}
+	In part 1 problem 2, we can get thee value of $\theta$ given the normal equation $X^T X \theta = X^T y$ is 
+	$$\theta = (X^T X)^{-1} X^T y$$
+	The date comes from the linear model:
+	$$y^{(i)} = \theta^T x^{(i)} + \epsilon^{(i)} $$
+	the expectation of $\theta$ is
+	 \begin{equation*}
+		\begin{split}
+		E[\theta] &= E[(X^T X)^{-1} X^T y]\\
+				 &= E[(X^T X)^{-1} X^T (X\theta^* + \epsilon)]\\
+				 &=E[(X^T X)^{-1} (X^T X \theta^* +X^T \epsilon)]\\
+				 &=E[(X^T X)^{-1}X^T X\theta^* + (X^T X)^{-1} X^T \epsilon]\\
+				 &=E[\theta^*] +E[(X^T X)^{-1} X^T \epsilon]
+		\end{split}
+		\end{equation*}
+	since each $\epsilon^{(i)}$is an independent random variable drawn from a normal distribution with zero mean and variance $\sigma^2$ and $\theta^*$ is a true parameter that has certain value. Then $E[\theta]$ can be written as
+	$$E[\theta] = E[\theta^*] +0 = \theta^*$$
+	
+\end{proof}
+
+%%part 2 problem 2
+	\item Show that the variance of the least squares estimator is $Var(\theta) = (X^T X)^{-1} \sigma^2$.
+	
+\begin{proof}
+	$$Var(\theta) = E[\theta^2] -(E[\theta])^2$$
+	since we already knew that $E[\theta] = \theta^*$. So in order to get $Var(\theta)$, all we need to do is to compute $E[\theta^2]$.
+	\begin{equation*}
+	\begin{split}
+	E[\theta^2] &= E[((X^T X)^{-1} X^T y)((X^T X)^{-1} X^T y)^T]\\
+	&=E[(\theta^* + (X^T X)^{-1} X^T\varSigma) (\theta^* + (X^T X)^{-1} X^T\varSigma)^T ]\\
+	&=E[\theta^* \theta^{*T} + (X^T X)^{-1} X^T \varSigma \theta^{*T} + \theta^* \varSigma^T X (X^T X)^{-1} + (X^T X)^{-1} X^T \varSigma \varSigma^T X (X^T X)^{-1}]
+	\end{split}
+	\end{equation*}
+	$\varSigma$ is the covariance matrix generated by $\epsilon$ and each $\epsilon^{(i)}$is an independent random variable drawn from a normal distribution with zero mean and variance $\sigma^2$. Therefore the expectation of $\varSigma$ is zero. $\varSigma$ is also independent to $X$ and $\theta^*$, $\varSigma = \sigma^2 I$, where $I$ is the identity matrix. Therefore
+	$$ E[\theta^2]= (\theta^*)^2 + \sigma^2 I (X^T X)^{-1}$$
+	Then we have 
+	\begin{equation*}
+	\begin{split}
+	Var(\theta) &= E[\theta^2] -(E[\theta])^2\\
+	&=(\theta^*)^2 + \sigma^2 I (X^T X)^{-1} -(\theta^*)^2\\
+	& =  (X^T X)^{-1} \sigma^2
+	\end{split}
+	\end{equation*}
+\end{proof}
+\end{enumerate}
 
 
 
