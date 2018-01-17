@@ -21,9 +21,9 @@ def feature_normalize(X):
 
     ########################################################################
     # TODO: modify the three lines below to return the correct values
-    mu = np.zeros((X.shape[1],))
-    sigma = np.ones((X.shape[1],))
-    X_norm = np.zeros(X.shape)
+    mu = np.mean(X,axis = 0)
+    sigma = np.std(X,axis = 0)
+    X_norm = (X-mu)/sigma
   
     ########################################################################
     return X_norm, mu, sigma
@@ -86,17 +86,21 @@ def learning_curve(X,y,Xval,yval,reg):
 #############################################################################
 
 def validation_curve(X,y,Xval,yval):
-  
-  reg_vec = [0, 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3, 10]
-  error_train = np.zeros((len(reg_vec),))
-  error_val = np.zeros((len(reg_vec),))
+    reg_vec = [0, 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3, 10]
+    error_train = np.zeros((len(reg_vec),))
+    error_val = np.zeros((len(reg_vec),))
 
     ###########################################################################
     # TODO: compute error_train and error_val                                 #
     # 5 lines of code expected                                                #
     ###########################################################################
-
-  return reg_vec, error_train, error_val
+    reglinear_reg_vc = RegularizedLinearReg_SquaredLoss()
+    for i in xrange(len(reg_vec)):
+        theta_i = reglinear_reg_vc.train(X,y,reg_vec[i],num_iters=1000)
+        error_train[i] = reglinear_reg_vc.loss(theta_i,X,y,reg_vec[i])
+        error_val[i] = reglinear_reg_vc.loss(theta_i,Xval,yval,reg_vec[i])
+    
+    return reg_vec, error_train, error_val
 
 import random
 
@@ -126,8 +130,20 @@ def averaged_learning_curve(X,y,Xval,yval,reg):
     # TODO: compute error_train and error_val                                 #
     # 10-12 lines of code expected                                            #
     ###########################################################################
-
-
+    
+    for i in xrange(num_examples):
+        error_train_vec = []; error_val_vec = []
+        for count in xrange(50):
+            index = range(i)
+            np.random.shuffle(index)
+            X_i = X[index]; y_i = y[index]
+            Xval_i = Xval[index]; yval_i = yval[index]
+            reglinear_reg_alc = RegularizedLinearReg_SquaredLoss()
+            theta_i = reglinear_reg_alc.train(X_i,y_i,reg,num_iters=1000)
+            error_train_vec.append(reglinear_reg_alc.loss(theta_i,X_i,y_i,0))
+            error_val_vec.append(reglinear_reg_alc.loss(theta_i,Xval_i,yval_i,0))
+        error_train[i] = np.mean(error_train_vec)
+        error_val[i] = np.mean(error_val_vec)
 
     ###########################################################################
     return error_train, error_val

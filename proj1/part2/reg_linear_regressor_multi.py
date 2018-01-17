@@ -27,7 +27,6 @@ class RegularizedLinearRegressor_Multi:
         num_train,dim = X.shape
         theta = np.ones((dim,))
 
-
         # Run scipy's fmin algorithm to run the gradient descent
         theta_opt = scipy.optimize.fmin_bfgs(self.loss, theta, fprime = self.grad_loss, args=(X,y,reg),maxiter=num_iters)
             
@@ -89,6 +88,7 @@ class RegularizedLinearRegressor_Multi:
         #  1 line of code expected                                                #
         ###########################################################################
 
+        y_pred = np.dot(X, self.theta)
 
         ###########################################################################
         #                           END OF YOUR CODE                              #
