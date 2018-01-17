@@ -59,7 +59,8 @@ def learning_curve(X,y,Xval,yval,reg):
     reglinear_reg_lc = RegularizedLinearReg_SquaredLoss()
     for i in xrange(num_examples):
         X_i = X[:i+1]; y_i = y[:i+1]
-        theta_i = reglinear_reg_lc.train(X_i,y_i,reg=0.0,num_iters=1000)
+        #theta_i = reglinear_reg_lc.train(X_i,y_i,reg=0.0,num_iters=1000)
+        theta_i = reglinear_reg_lc.train(X_i,y_i,reg,num_iters=1000)
         error_train[i] = reglinear_reg_lc.loss(theta_i,X_i,y_i,0)
         error_val[i] = reglinear_reg_lc.loss(theta_i,Xval,yval,0)
     
@@ -97,8 +98,8 @@ def validation_curve(X,y,Xval,yval):
     reglinear_reg_vc = RegularizedLinearReg_SquaredLoss()
     for i in xrange(len(reg_vec)):
         theta_i = reglinear_reg_vc.train(X,y,reg_vec[i],num_iters=1000)
-        error_train[i] = reglinear_reg_vc.loss(theta_i,X,y,reg_vec[i])
-        error_val[i] = reglinear_reg_vc.loss(theta_i,Xval,yval,reg_vec[i])
+        error_train[i] = reglinear_reg_vc.loss(theta_i,X,y,0)
+        error_val[i] = reglinear_reg_vc.loss(theta_i,Xval,yval,0)
     
     return reg_vec, error_train, error_val
 
@@ -134,8 +135,9 @@ def averaged_learning_curve(X,y,Xval,yval,reg):
     for i in xrange(num_examples):
         error_train_vec = []; error_val_vec = []
         for count in xrange(50):
-            index = range(i)
+            index = range(num_examples)
             np.random.shuffle(index)
+            index = index[:i+1]
             X_i = X[index]; y_i = y[index]
             Xval_i = Xval[index]; yval_i = yval[index]
             reglinear_reg_alc = RegularizedLinearReg_SquaredLoss()

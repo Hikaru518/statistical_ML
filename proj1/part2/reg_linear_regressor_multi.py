@@ -105,7 +105,7 @@ class RegularizedLinearRegressor_Multi:
         #  One line of code expected                                              #
         ###########################################################################
 
-        theta_n = np.zeros((X.shape[1],))
+        theta_n = np.dot(np.dot(np.linalg.inv(np.dot(X.transpose(),X)),X.transpose()),y)
 
         ###########################################################################
         return theta_n
@@ -133,7 +133,7 @@ class RegularizedLinearReg_SquaredLoss(RegularizedLinearRegressor_Multi):
         #  2 lines of code expected                                               #
         ###########################################################################
         err = np.dot(X, theta) - y 
-        J = 0.5*np.sum(np.square(err))/num_examples + 0.5*dim*reg*np.sum(np.square(theta[1:]))/num_examples
+        J = 0.5*np.sum(np.square(err))/num_examples + 0.5*reg*np.sum(np.square(theta[1:]))/num_examples
 
         ###########################################################################
         #                           END OF YOUR CODE                              #
