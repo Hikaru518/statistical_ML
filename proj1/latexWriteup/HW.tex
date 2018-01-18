@@ -9,6 +9,8 @@
 \usepackage{amsthm}
 \usepackage{mathrsfs}
 \usepackage{color}
+\usepackage{graphicx}
+\usepackage{float}
 
 %Here I define some theorem styles and shortcut commands for symbols I use often
 \theoremstyle{definition}
@@ -90,10 +92,20 @@ Due: 1/18/2018 %You should write the date here.
 Generate different distributions from uniform distribution:
 \begin{enumerate}
 	\item	Plot the histogram of a categorical distribution with probabilities [0.2,0.4,0.3,0.1].
+	\begin{center}
+		\includegraphics[height=7cm]{cd}
+	\end{center}
 	\item	Plot the univariate normal distribution with mean of 10 and standard deviation of 1.
+	\begin{center}
+		\includegraphics[height=7cm]{und}
+	\end{center}
 	\item	Produce a scatter plot of the samples for a 2-D Gaussian with mean at [1,1] and a covariance matrix [[1,0.5],[0.5,1]]
-	\item	Test your mixture sampling code by writing a function that implements an equal weighted mixture of four Gaussians in 2 dimensions, centered at $(\pm 1; \pm 1)$ and having covariance $I$. Estimate the probability that a sample from this distribution lies within the unit circle centered at (0.1, 0.2).
+	\begin{center}
+		\includegraphics[height=8cm]{mund}
+	\end{center}
+	\item	Test your mixture sampling code by writing a function that implements an equal weighted mixture of four Gaussians in 2 dimensions, centered at $(\pm 1; \pm 1)$ and having covariance $I$. Estimate the probability that a sample from this distribution lies within the unit circle centered at (0.1, 0.2).	
 	
+	The Probability that falls in unit circle with center at (0.1,0.2) is 0.1815.
 \end{enumerate}
 
 %% Problem 2
@@ -358,23 +370,144 @@ is orthogonal, i.e., $A^T A = 1$.
 \end{enumerate}
 
 %%part 2 
-\subsection*{Part 3: Implementing Linear regression}
-
-\textbf{3.1 Linear regression with one variable}
+\subsection*{Part 3: Implementing Linear Regression}
+\vspace{4mm}
+%\begin{center}
+%	\includegraphics[height=7cm]{parta1.jpg}\\
+%	\caption{Scatter plot of training data}
+%\end{center}
+\textbf{Problem 3.1.A1 Implementing gradient descent}
+\begin{flushleft}
+	Include Figure 1, Figure 2 and Figure 3
+\end{flushleft}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{fig1.pdf}
+	\caption{Scatter plot of training data}
+	\label{fig:1}
+\end{figure}
+\begin{figure}[h]
+	\centering 
+	\includegraphics[width=8cm]{fig2a.pdf}
+	\caption{Fitting a linear model to the data in Figure 1}
+	\label{fig:2}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm]{fig2b.pdf}
+	\caption{Convergence of gradient descent to fit the linear model in Figure 2}
+	\label{fig:3}
+\end{figure}
 \begin{enumerate}
-	\item Qualitative analysis of the linear fit. What can you say about the quality of the linear fit for this data? In your assignment writeup.pdf, explain how you expect the model to perform at the low and high ends of values for LSTAT? How could we improve the quality of the fit?
-    \item Exploring convergence of gradient descent. What are good learning rates and number of iterations for this problem?
+	\item Qualitative analysis of the linear fit. What can you say about the quality of the linear fit for this data? In your assignment writeup.pdf, explain how you expect the model to perform at the low and high ends of values for LSTAT? How could we improve the quality of the fit?\\
+	As we can see in the Figure 2, the linear fit for this data is not that good, especially at the high and low ends. The regression should have some curve at the low and high ends of values for LSTAT, which We can replace x with some non-linear function to model non-linear relationship. Using polynomial regression.
 \end{enumerate}
-\quad \\
-\textbf{3.2 Linear regression with multiple variables}
-
-
+\textbf{Problem 3.1.A3 Predicting on unseen data}
 \begin{enumerate}
-	\item 
+	\item For lower status percentage = 5, we predict a median home value of 298034.4941220727\\
+	For lower status percentage = 50, we predict a median home value of -129482.12889798547
+	\item Comparing with sklearn's linear regression model.\\
+	The coefficients computed by sklearn:  34.5538408794  and  -0.950049353758
 \end{enumerate}
+\textbf{Problem 3.1.B2 Loss function and gradient descent}\\
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=7cm]{fig5.pdf}
+	\caption{Number of iteration}
+	\label{fig:4}
+\end{figure}
+\\
+\textbf{Problem 3.1.B3 Predicting on unseen data}
+\begin{flushleft}
+	For average home in Boston suburbs, we predict a median home value of 225328.063241
+\end{flushleft}
+\textbf{Problem 3.1.B4: Normal equations (5 points)}
+\begin{flushleft}
+	For average home in Boston suburbs, we predict a median home value of 225328.06324113606. The prediction matches.
+\end{flushleft}
+\textbf{Problem 3.1.B5: Exploring convergence of gradient descent}\\
+Figure 5
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=8cm]{fig6.pdf}
+%	\caption{Convergence of gradient descent for linear regression with multiple variables (Boston housing data set)}
+%	\label{fig:5}
+%\end{figure}
+\begin{enumerate}
+	\item Exploring convergence of gradient descent. What are good learning rates and number of iterations for this problem?	
+\end{enumerate}
+\textbf{Problem 3.2 Visualizing the dataset}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm]{fig6.pdf}
+	\caption{Figure 6: The training data for regularized linear regression}
+	\label{fig:6}
+\end{figure}
 
-Comment on the impact of the choice of lambda on the quality of the learned model in your writeup.pdf.
+\textbf{Problem 3.2.A2 Regularized linear regression cost function}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm]{fig7.pdf}
+	\caption{The best fit line for the training data}
+	\label{fig:7}
+\end{figure}
 
+\textbf{Problem 3.2.A3 Learning curves}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm]{fig8.pdf}
+	\caption{Learning curves}
+	\label{fig:8}
+\end{figure}
+
+\textbf{Problem 3.2 Learning polynomial regression models}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm]{fig9.pdf}
+	\caption{Polynomial fit for lambda = 0 with a p=6 order model.}
+	\label{fig:9}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm]{fig10.pdf}
+	\caption{Learning curve for lambda = 0.}
+	\label{fig:10}
+\end{figure}
+\textbf{Problem 3.2.A4: Adjusting the regularization parameter}
+\begin{figure}[H]
+	\includegraphics[width=5.5cm]{fig9_1.pdf}
+	\includegraphics[width=5.5cm]{fig9_10.pdf}
+	\includegraphics[width=5.5cm]{fig9_100.pdf}
+	\includegraphics[width=5.5cm]{fig10_1.pdf}
+	\includegraphics[width=5.5cm]{fig10_10.pdf}
+	\includegraphics[width=5.5cm]{fig10_100.pdf}
+	\caption{Adjusting the regularization parameter}
+	\label{fig:11}
+\end{figure}
+\begin{flushleft}
+	Increasing lambda results in less overfitting but also greater bias. The training error and testing error increase as long as the lambda increases.
+\end{flushleft}
+\textbf{Problem 3.2.A5: Selecting λ using a validation set}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm]{fig10to11.pdf}
+	\caption{training and validation error on different lambda}
+	\label{fig:12}
+\end{figure}
+\begin{flushleft}
+	The best model is lambda = 3. When lambda = 3, the validation error is the smallest. 
+\end{flushleft}
+\textbf{Problem 3.2.A6: Computing test set error on the best model}
+\begin{flushleft}
+	When lambda = 0.3, the model has the smallest validation error. The test error is: 5.857077821089781
+\end{flushleft}
+\textbf{Problem 3.2.A7: Plotting learning curves with randomly selected examples}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm]{fig11.pdf}
+	\caption{Averaged Learning curve for lambda = 1}
+	\label{fig:13}
+\end{figure}
 \end{document}
 
 
