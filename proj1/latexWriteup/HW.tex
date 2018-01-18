@@ -12,6 +12,13 @@
 \usepackage{graphicx}
 \usepackage{float}
 
+%Algorithm packages
+\usepackage{algorithm}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm  
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm  
+
 %Here I define some theorem styles and shortcut commands for symbols I use often
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
@@ -105,7 +112,10 @@ Generate different distributions from uniform distribution:
 	\end{center}
 	\item	Test your mixture sampling code by writing a function that implements an equal weighted mixture of four Gaussians in 2 dimensions, centered at $(\pm 1; \pm 1)$ and having covariance $I$. Estimate the probability that a sample from this distribution lies within the unit circle centered at (0.1, 0.2).	
 	
-	The Probability that falls in unit circle with center at (0.1,0.2) is 0.1815.
+	\begin{soln}
+		The Probability that falls in unit circle with center at (0.1,0.2) is 0.1815.
+	\end{soln}
+
 \end{enumerate}
 
 %% Problem 2
@@ -314,6 +324,30 @@ is orthogonal, i.e., $A^T A = 1$.
 	$$w^{(i)}= \exp({-\frac{(x -x^{(i)})^T (x-x^{(i)})}{2 \tau^2}})$$
 	%% big 
 	Points near $x$ are weighted more heavily than points far away from $x$. The parameter $\tau$ is a band width defining the sphere of influence around $x$. Note how the weights are defined by the input $x$. Write down an algorithm for calculating $\theta$ by batch gradient descent for locally weighted linear regression. Is locally weighted linear regression a parametric or a non-parametric method?
+	
+	\begin{soln}
+		Algorithm to calculate $\theta$ is shown below. 
+		
+		{\centering
+			\begin{minipage}{.75\linewidth}
+				\begin{algorithm}[H]
+					\caption{Weighted linear regression using batch gradient descent}  
+					\begin{algorithmic}[1]  
+						\State Calculate $W$ using $w^{(i)}= \exp({-\frac{(x -x^{(i)})^T (x-x^{(i)})}{2 \tau^2}})$;  
+						\State Set learnign rate $\alpha$;
+						
+						\For{enough iterations}
+						\State Update $\theta$ where $\theta_j = \theta_j - \alpha \sum_{i = 1}^{m}w^{(i)}(\theta^Tx^{(i)}-y^{(i)})x_j$ 
+						\EndFor 
+						\\  
+						\Return $\theta$;  
+					\end{algorithmic}  
+				\end{algorithm}   
+			\end{minipage}
+		}
+		  
+		Because it uses data points when predicting, it is a non-parametric method.
+	\end{soln}
 \end{enumerate}
 
 %%part 2 
@@ -380,13 +414,13 @@ is orthogonal, i.e., $A^T A = 1$.
 \begin{flushleft}
 	Include Figure 1, Figure 2 and Figure 3
 \end{flushleft}
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=8cm]{fig1.pdf}
 	\caption{Scatter plot of training data}
 	\label{fig:1}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering 
 	\includegraphics[width=8cm]{fig2a.pdf}
 	\caption{Fitting a linear model to the data in Figure 1}
@@ -399,15 +433,27 @@ is orthogonal, i.e., $A^T A = 1$.
 	\label{fig:3}
 \end{figure}
 \begin{enumerate}
-	\item Qualitative analysis of the linear fit. What can you say about the quality of the linear fit for this data? In your assignment writeup.pdf, explain how you expect the model to perform at the low and high ends of values for LSTAT? How could we improve the quality of the fit?\\
-	As we can see in the Figure 2, the linear fit for this data is not that good, especially at the high and low ends. The regression should have some curve at the low and high ends of values for LSTAT, which We can replace x with some non-linear function to model non-linear relationship. Using polynomial regression.
+	\item Qualitative analysis of the linear fit. What can you say about the quality of the linear fit for this data? In your assignment writeup.pdf, explain how you expect the model to perform at the low and high ends of values for LSTAT? How could we improve the quality of the fit?
+	\begin{soln}
+		As we can see in the Figure 2, the linear fit for this data is not that good, especially at the high and low ends. The regression should have some curve at the low and high ends of values for LSTAT, which We can replace x with some non-linear function to model non-linear relationship. Using polynomial regression. 
+	\end{soln}
+	
 \end{enumerate}
 \textbf{Problem 3.1.A3 Predicting on unseen data}
 \begin{enumerate}
-	\item For lower status percentage = 5, we predict a median home value of 298034.4941220727\\
-	For lower status percentage = 50, we predict a median home value of -129482.12889798547
-	\item Comparing with sklearn's linear regression model.\\
-	The coefficients computed by sklearn:  34.5538408794  and  -0.950049353758
+	\item Make predictions on median home values for census tracts where the percentage of the population of lower economic status is 5\% and 50\%.
+	\begin{soln}
+		For lower status percentage = 5, we predict a median home value of 298034.4941220727\\
+		For lower status percentage = 50, we predict a median home value of -129482.12889798547
+	\end{soln}
+	\item Comparing with sklearn's linear regression model.
+	\begin{soln} We can see from the data below that the results using different methods are quite similar.
+		The coefficients computed by sklearn:  34.5538408794  and  -0.950049353758. \\
+		The coefficients computed by gradient descent:  34.55363411 and -0.95003694.
+		
+		
+	\end{soln}
+	
 \end{enumerate}
 \textbf{Problem 3.1.B2 Loss function and gradient descent}\\
 \begin{figure}[h]
@@ -440,7 +486,7 @@ Figure 5
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=8cm]{fig6.pdf}
-	\caption{Figure 6: The training data for regularized linear regression}
+	\caption{The training data for regularized linear regression}
 	\label{fig:6}
 \end{figure}
 
@@ -505,9 +551,59 @@ Figure 5
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=8cm]{fig11.pdf}
-	\caption{Averaged Learning curve for lambda = 1}
+	\caption{Averaged Learning curve for $lambda = 1$}
 	\label{fig:13}
 \end{figure}
+
+\subsection*{Extra Credit: Building regularized models for Boston data set}
+\begin{enumerate}
+	\item Use sklearn's built-in functions to split the data into training, validation and test sets. 
+	\begin{soln}
+		I divide the data set into 3 different parts. The training set comes from 50\% of the data, the validation set comes from 25\% of the data, and the test set comes from 25\% of the data.
+	\end{soln}
+	\item What is the lowest achievable error on the test set with  $\lambda$ =0  ?
+	\begin{soln}
+		When $\lambda = 0$, the error of on the test set is 12.3122226194.
+	\end{soln}
+	\item Select the best value for  $\lambda$  and report the test set error with the best $\lambda$.
+	\begin{soln}
+		I select the value of $\lambda$ using validation set. The result is shown in figure \ref{fig:select_lambda_1}.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=8cm]{imgs//select_lambda_1.pdf}
+			\caption{Select value for $\lambda$ using validation set}
+			\label{fig:select_lambda_1}
+		\end{figure}
+	We can see that when $\lambda = 3$, the validation error is the lowest.
+	\end{soln}
+	\item Polynomial regression: quadratic features.
+	\begin{soln}
+		After transform data into polynomial, I repeated the steps above. At first I do $\lambda$ selection using validation set. The $\lambda$ selection result is shown in figure \ref{fig:select_lambda_2}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=8cm]{imgs//select_lambda_2.pdf}
+			\caption{Select value for $\lambda$ using validation set for quadratic features}
+			\label{fig:select_lambda_2}
+		\end{figure}
+		We select $\lambda = $. Then we train the model with $\lambda = $, the error is:7.09036691533.
+	\end{soln}
+	\item Polynomial regression: cubic features.
+	\begin{soln}
+		After transform data into polynomial, I repeated the steps above. At first I do $\lambda$ selection using validation set. The $\lambda$ selection result is shown in figure \ref{fig:select_lambda_3}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=8cm]{imgs//select_lambda_3.pdf}
+			\caption{Select value for $\lambda$ using validation set for cubic features}
+			\label{fig:select_lambda_3}
+		\end{figure}
+		We select $\lambda = 10$. Then we train the model with $\lambda = 10$, the error is:7.09036691533.
+	\end{soln}
+\end{enumerate}
+
+
+
+
+
 \end{document}
 
 
