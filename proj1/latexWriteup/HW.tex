@@ -306,10 +306,17 @@ is orthogonal, i.e., $A^T A = 1$.
 	\end{proof}
 	\item If univariate functions $f$ and $g$ are convex and non-negative on $S$, and have their minimum within $S$ at the same point, then $fg$ is convex on $S$.
 	\begin{proof}
-		We define a function $u=fg$, then 
-		$$u(\lambda a + (1-\lambda) b ) = f(\lambda a + (1-\lambda) b) g(\lambda a + (1-\lambda) b) \leq [\lambda f(a) + (1-\lambda) f(b) +\lambda g(a)] [\lambda g(a) + (1-\lambda) g(b)]\leq \lambda^2 f(a)g(a) + (1-\lambda)^2 f(b)g(b)$$
+		We define a function $u=fg$, then
+		\begin{equation*}		
+		\begin{split}   
+			    u(\lambda a + (1-\lambda) b )  & = f(\lambda a + (1-\lambda) b) g(\lambda a + (1-\lambda) b) \\ 
+			    & \leq [\lambda f(a) + (1-\lambda) f(b) +\lambda g(a)] [\lambda g(a) + (1-\lambda) g(b)] \\ 
+			    & \leq \lambda^2 f(a)g(a) + (1-\lambda)^2 f(b)g(b)
+		\end{split}
+		\end{equation*}
 		$$ left \leq \lambda f(a)g(a) + (1-\lambda)f(b)g(b) = \lambda u(a) + (1-\lambda)u(b)$$
-		therefore function  $fg$ is convex
+		therefore function  $fg$ is convex.
+	
 	\end{proof}
 \end{enumerate} 
 \item The entropy of a categorical distribution on $K$ values is defined as 
