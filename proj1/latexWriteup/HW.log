@@ -1,14 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.1.9)  18 JAN 2018 11:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.11)  18 JAN 2018 18:41
 entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
 **./HW.tex
-(./HW.tex
+(HW.tex
 LaTeX2e <2017-04-15>
-Babel <3.16> and hyphenation patterns for 84 language(s) loaded.
-(c:/texlive/2017/texmf-dist/tex/latex/base/book.cls
+Babel <3.15> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\book.cls"
 Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
-(c:/texlive/2017/texmf-dist/tex/latex/base/bk10.clo
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\bk10.clo"
 File: bk10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -24,7 +22,7 @@ File: bk10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(c:/texlive/2017/texmf-dist/tex/latex/tools/array.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
 Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 \col@sep=\dimen103
 \extrarowheight=\dimen104
@@ -32,29 +30,29 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 \extratabsurround=\skip43
 \backup@length=\skip44
 )
-(c:/texlive/2017/texmf-dist/tex/latex/graphics/epsfig.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\epsfig.sty"
 Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
 
-(c:/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-(c:/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-(c:/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-(c:/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(c:/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(c:/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/01 v1.0k Graphics/color driver for pdftex
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2017/06/24 v1.0g Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen105
 \Gin@req@width=\dimen106
@@ -62,24 +60,24 @@ File: pdftex.def 2018/01/01 v1.0k Graphics/color driver for pdftex
 \epsfxsize=\dimen107
 \epsfysize=\dimen108
 )
-(c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2017/09/02 v2.17a AMS math features
 \@mathmargin=\skip45
 
 For additional information on amsmath, use the `?' option.
-(c:/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks16
 \ex@=\dimen109
 ))
-(c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen110
 )
-(c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count88
@@ -120,22 +118,22 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
-(c:/texlive/2017/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(c:/texlive/2017/texmf-dist/tex/latex/amsfonts/amssymb.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-(c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsxtra.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsxtra.sty"
 Package: amsxtra 1999/11/15 v1.2c AMS extra commands
 LaTeX Info: Redefining \nobreakspace on input line 54.
 )
-(c:/texlive/2017/texmf-dist/tex/latex/amscls/amsthm.sty
-Package: amsthm 2017/10/31 v2.20.4
+("C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
+Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks21
 \thm@bodyfont=\toks22
 \thm@headfont=\toks23
@@ -146,19 +144,19 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@headsep=\skip50
 \dth@everypar=\toks26
 )
-(c:/texlive/2017/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\jknappen\mathrsfs.sty"
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup6
 )
-(c:/texlive/2017/texmf-dist/tex/latex/graphics/color.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
 Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 
-(c:/texlive/2017/texmf-dist/tex/latex/graphics-cfg/color.cfg
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
 )
-(c:/texlive/2017/texmf-dist/tex/latex/float/float.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count100
 \float@exts=\toks27
@@ -166,406 +164,27 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks28
 \@floatcapt=\box29
 )
-(c:/texlive/2017/texmf-dist/tex/latex/algorithms/algorithm.sty
-Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
-nment
 
-(c:/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)
-\@float@every@algorithm=\toks29
-\c@algorithm=\count101
-)
-(c:/texlive/2017/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
-Package: algpseudocode 
+! LaTeX Error: File `algorithm.sty' not found.
 
-(c:/texlive/2017/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
-Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
 
-Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count102
-\c@ALG@rem=\count103
-\c@ALG@nested=\count104
-\ALG@tlm=\skip51
-\ALG@thistlm=\skip52
-\c@ALG@Lnr=\count105
-\c@ALG@blocknr=\count106
-\c@ALG@storecount=\count107
-\c@ALG@tmpcounter=\count108
-\ALG@tmplength=\skip53
-)
-Document Style - pseudocode environments for use with the `algorithmicx' style
-)
-\c@defn=\count109
-\c@thm=\count110
-\c@cor=\count111
-\c@lem=\count112
-\c@ex=\count113
-\c@prop=\count114
- (./HW.aux)
-\openout1 = `HW.aux'.
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.21 
+      
+*** (cannot \read from terminal in nonstop modes)
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
- (c:/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count115
-\scratchdimen=\dimen118
-\scratchbox=\box30
-\nofMPsegments=\count116
-\nofMParguments=\count117
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count118
-\MPscratchDim=\dimen119
-\MPnumerator=\count119
-\makeMPintoPDFobject=\count120
-\everyMPtoPDFconversion=\toks31
-) (c:/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-(c:/texlive/2017/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-)
-(c:/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-
-(c:/texlive/2017/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-
-(c:/texlive/2017/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)))
-(c:/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-
-(c:/texlive/2017/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-
-(c:/texlive/2017/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-
-(c:/texlive/2017/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-(c:/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(c:/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
-
-(c:/texlive/2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-Package epstopdf Info: Source file: <cd.eps>
-(epstopdf)                    date: 2018-01-18 07:53:56
-(epstopdf)                    size: 27971 bytes
-(epstopdf)             Output file: <cd-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-01-18 07:53:56
-(epstopdf)                    size: 16853 bytes
-(epstopdf)             Command: <repstopdf --outfile=cd-eps-converted-to.pdf cd
-.eps>
-(epstopdf)             \includegraphics on input line 103.
-Package epstopdf Info: Output file is already uptodate.
-<cd-eps-converted-to.pdf, id=1, 462.72874pt x 342.27875pt>
-File: cd-eps-converted-to.pdf Graphic file (type pdf)
-<use cd-eps-converted-to.pdf>
-Package pdftex.def Info: cd-eps-converted-to.pdf  used on input line 103.
-(pdftex.def)             Requested size: 269.26544pt x 199.16928pt.
-Package epstopdf Info: Source file: <und.eps>
-(epstopdf)                    date: 2018-01-18 07:53:57
-(epstopdf)                    size: 35208 bytes
-(epstopdf)             Output file: <und-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-01-18 07:53:57
-(epstopdf)                    size: 18214 bytes
-(epstopdf)             Command: <repstopdf --outfile=und-eps-converted-to.pdf u
-nd.eps>
-(epstopdf)             \includegraphics on input line 107.
-Package epstopdf Info: Output file is already uptodate.
-<und-eps-converted-to.pdf, id=2, 462.72874pt x 342.27875pt>
-File: und-eps-converted-to.pdf Graphic file (type pdf)
-<use und-eps-converted-to.pdf>
-Package pdftex.def Info: und-eps-converted-to.pdf  used on input line 107.
-(pdftex.def)             Requested size: 269.26544pt x 199.16928pt.
-Package epstopdf Info: Source file: <mund.eps>
-(epstopdf)                    date: 2018-01-18 07:53:57
-(epstopdf)                    size: 207460 bytes
-(epstopdf)             Output file: <mund-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-01-18 07:53:57
-(epstopdf)                    size: 1379664 bytes
-(epstopdf)             Command: <repstopdf --outfile=mund-eps-converted-to.pdf 
-mund.eps>
-(epstopdf)             \includegraphics on input line 111.
-Package epstopdf Info: Output file is already uptodate.
-<mund-eps-converted-to.pdf, id=3, 760.8425pt x 581.17125pt>
-File: mund-eps-converted-to.pdf Graphic file (type pdf)
-<use mund-eps-converted-to.pdf>
-Package pdftex.def Info: mund-eps-converted-to.pdf  used on input line 111.
-(pdftex.def)             Requested size: 297.99281pt x 227.62204pt.
-
-Underfull \vbox (badness 1824) has occurred while \output is active []
-
- [1
-
-{c:/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./cd-eps-conver
-ted-to.pdf> <./und-eps-converted-to.pdf>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 113.
-
-(c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 113.
-
-(c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 113.
-
-(c:/texlive/2017/texmf-dist/tex/latex/jknapltx/ursfs.fd
-File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-) [2 <./mund-eps-converted-to.pdf>]
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no — in font cmr10!
- [3] [4] [5]
-<fig1.pdf, id=148, 722.7pt x 578.16pt>
-File: fig1.pdf Graphic file (type pdf)
-<use fig1.pdf>
-Package pdftex.def Info: fig1.pdf  used on input line 419.
-(pdftex.def)             Requested size: 227.62204pt x 182.0949pt.
-<fig2a.pdf, id=149, 722.7pt x 578.16pt>
-File: fig2a.pdf Graphic file (type pdf)
-<use fig2a.pdf>
-Package pdftex.def Info: fig2a.pdf  used on input line 425.
-(pdftex.def)             Requested size: 227.62204pt x 182.0949pt.
- [6]
-<fig2b.pdf, id=153, 722.7pt x 578.16pt>
-File: fig2b.pdf Graphic file (type pdf)
-<use fig2b.pdf>
-Package pdftex.def Info: fig2b.pdf  used on input line 431.
-(pdftex.def)             Requested size: 227.62204pt x 182.0949pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [7 <./fig1.pdf> <./fig2a.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig2a.pdf): PDF inclusion: multiple pdfs w
-ith page group included in a single page
->]
-<fig5.pdf, id=207, 722.7pt x 578.16pt>
-File: fig5.pdf Graphic file (type pdf)
-<use fig5.pdf>
-Package pdftex.def Info: fig5.pdf  used on input line 461.
-(pdftex.def)             Requested size: 199.16928pt x 159.33414pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<fig6.pdf, id=208, 722.7pt x 578.16pt>
-File: fig6.pdf Graphic file (type pdf)
-<use fig6.pdf>
-Package pdftex.def Info: fig6.pdf  used on input line 488.
-(pdftex.def)             Requested size: 227.62204pt x 182.0949pt.
-[8 <./fig2b.pdf>]
-<fig7.pdf, id=243, 433.62pt x 289.08pt>
-File: fig7.pdf Graphic file (type pdf)
-<use fig7.pdf>
-Package pdftex.def Info: fig7.pdf  used on input line 496.
-(pdftex.def)             Requested size: 227.62204pt x 151.74721pt.
-<fig8.pdf, id=244, 433.62pt x 289.08pt>
-File: fig8.pdf Graphic file (type pdf)
-<use fig8.pdf>
-Package pdftex.def Info: fig8.pdf  used on input line 504.
-(pdftex.def)             Requested size: 227.62204pt x 151.74721pt.
- [9 <./fig5.pdf> <./fig6.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig6.pdf): PDF inclusion: multiple pdfs wi
-th page group included in a single page
-> <./fig7.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig7.pdf): PDF inclusion: multiple pdfs wi
-th page group included in a single page
->]
-<fig9.pdf, id=348, 433.62pt x 289.08pt>
-File: fig9.pdf Graphic file (type pdf)
-<use fig9.pdf>
-Package pdftex.def Info: fig9.pdf  used on input line 512.
-(pdftex.def)             Requested size: 227.62204pt x 151.74721pt.
-<fig10.pdf, id=349, 433.62pt x 289.08pt>
-File: fig10.pdf Graphic file (type pdf)
-<use fig10.pdf>
-Package pdftex.def Info: fig10.pdf  used on input line 518.
-(pdftex.def)             Requested size: 227.62204pt x 151.74721pt.
-<fig9_1.pdf, id=350, 433.62pt x 289.08pt>
-File: fig9_1.pdf Graphic file (type pdf)
-<use fig9_1.pdf>
-Package pdftex.def Info: fig9_1.pdf  used on input line 524.
-(pdftex.def)             Requested size: 156.49014pt x 104.32896pt.
-<fig9_10.pdf, id=351, 433.62pt x 289.08pt>
-File: fig9_10.pdf Graphic file (type pdf)
-<use fig9_10.pdf>
-Package pdftex.def Info: fig9_10.pdf  used on input line 525.
-(pdftex.def)             Requested size: 156.49014pt x 104.32896pt.
-<fig9_100.pdf, id=352, 433.62pt x 289.08pt>
-File: fig9_100.pdf Graphic file (type pdf)
-<use fig9_100.pdf>
-Package pdftex.def Info: fig9_100.pdf  used on input line 526.
-(pdftex.def)             Requested size: 156.49014pt x 104.32896pt.
-<fig10_1.pdf, id=353, 433.62pt x 289.08pt>
-File: fig10_1.pdf Graphic file (type pdf)
-<use fig10_1.pdf>
-Package pdftex.def Info: fig10_1.pdf  used on input line 527.
-(pdftex.def)             Requested size: 156.49014pt x 104.32896pt.
-<fig10_10.pdf, id=354, 433.62pt x 289.08pt>
-File: fig10_10.pdf Graphic file (type pdf)
-<use fig10_10.pdf>
-Package pdftex.def Info: fig10_10.pdf  used on input line 528.
-(pdftex.def)             Requested size: 156.49014pt x 104.32896pt.
-<fig10_100.pdf, id=355, 433.62pt x 289.08pt>
-File: fig10_100.pdf Graphic file (type pdf)
-<use fig10_100.pdf>
-Package pdftex.def Info: fig10_100.pdf  used on input line 529.
-(pdftex.def)             Requested size: 156.49014pt x 104.32896pt.
-
-Overfull \hbox (4.15987pt too wide) in paragraph at lines 524--530
-[][] [] []
- []
-
-
-Overfull \hbox (4.15987pt too wide) in paragraph at lines 524--530
-[] [] [] 
- []
-
-[10 <./fig8.pdf> <./fig9.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig9.pdf): PDF inclusion: multiple pdfs wi
-th page group included in a single page
-> <./fig10.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig10.pdf): PDF inclusion: multiple pdfs w
-ith page group included in a single page
->]
-Missing character: There is no Î in font cmbx10!
-Missing character: There is no » in font cmbx10!
-<fig10to11.pdf, id=482, 433.62pt x 289.08pt>
-File: fig10to11.pdf Graphic file (type pdf)
-<use fig10to11.pdf>
-Package pdftex.def Info: fig10to11.pdf  used on input line 539.
-(pdftex.def)             Requested size: 227.62204pt x 151.74721pt.
-<fig11.pdf, id=483, 433.62pt x 289.08pt>
-File: fig11.pdf Graphic file (type pdf)
-<use fig11.pdf>
-Package pdftex.def Info: fig11.pdf  used on input line 553.
-(pdftex.def)             Requested size: 227.62204pt x 151.74721pt.
-
-Underfull \vbox (badness 4556) has occurred while \output is active []
-
- [11 <./fig9_1.pdf> <./fig9_10.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig9_10.pdf): PDF inclusion: multiple pdfs
- with page group included in a single page
-> <./fig9_100.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig9_100.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
-> <./fig10_1.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig10_1.pdf): PDF inclusion: multiple pdfs
- with page group included in a single page
-> <./fig10_10.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig10_10.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
-> <./fig10_100.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig10_100.pdf): PDF inclusion: multiple pd
-fs with page group included in a single page
-> <./fig10to11.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig10to11.pdf): PDF inclusion: multiple pd
-fs with page group included in a single page
->]
-<imgs//select_lambda_1.pdf, id=767, 722.7pt x 578.16pt>
-File: imgs//select_lambda_1.pdf Graphic file (type pdf)
-<use imgs//select_lambda_1.pdf>
-Package pdftex.def Info: imgs//select_lambda_1.pdf  used on input line 573.
-(pdftex.def)             Requested size: 227.62204pt x 182.0949pt.
-<imgs//select_lambda_2.pdf, id=768, 722.7pt x 578.16pt>
-File: imgs//select_lambda_2.pdf Graphic file (type pdf)
-<use imgs//select_lambda_2.pdf>
-Package pdftex.def Info: imgs//select_lambda_2.pdf  used on input line 584.
-(pdftex.def)             Requested size: 227.62204pt x 182.0949pt.
- [12 <./fig11.pdf> <./imgs//select_lambda_1.pdf
-
-pdfTeX warning: pdflatex.exe (file ./imgs//select_lambda_1.pdf): PDF inclusion:
- multiple pdfs with page group included in a single page
->]
-<imgs//select_lambda_3.pdf, id=848, 722.7pt x 578.16pt>
-File: imgs//select_lambda_3.pdf Graphic file (type pdf)
-<use imgs//select_lambda_3.pdf>
-Package pdftex.def Info: imgs//select_lambda_3.pdf  used on input line 595.
-(pdftex.def)             Requested size: 227.62204pt x 182.0949pt.
- [13 <./imgs//select_lambda_2.pdf> <./imgs//select_lambda_3.pdf
-
-pdfTeX warning: pdflatex.exe (file ./imgs//select_lambda_3.pdf): PDF inclusion:
- multiple pdfs with page group included in a single page
->] (./HW.aux) ) 
+ 
 Here is how much of TeX's memory you used:
- 3410 strings out of 492980
- 45561 string characters out of 6136208
- 109533 words of memory out of 5000000
- 6867 multiletter control sequences out of 15000+600000
- 10139 words of font info for 39 fonts, out of 8000000 for 9000
+ 1754 strings out of 493312
+ 20821 string characters out of 3138899
+ 75653 words of memory out of 3000000
+ 5323 multiletter control sequences out of 15000+200000
+ 3640 words of font info for 14 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,15n,25p,411b,481s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
-0.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:
-/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2
-017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2017/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2017/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2017/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi7.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmib10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-<c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive
-/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2017/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2017/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy5.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy7.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
-i10.pfb>
-Output written on HW.pdf (13 pages, 1866263 bytes).
-PDF statistics:
- 975 PDF objects out of 1000 (max. 8388607)
- 201 compressed objects within 3 object streams
- 0 named destinations out of 1000 (max. 500000)
- 116 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+ 32i,0n,24p,221b,36s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!

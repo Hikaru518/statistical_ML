@@ -18,7 +18,6 @@
 \usepackage{amsmath}  
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm  
 \renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm  
-
 %Here I define some theorem styles and shortcut commands for symbols I use often
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
@@ -471,8 +470,7 @@ is orthogonal, i.e., $A^T A = 1$.
 \begin{flushleft}
 	For average home in Boston suburbs, we predict a median home value of 225328.06324113606. The prediction matches.
 \end{flushleft}
-\textbf{Problem 3.1.B5: Exploring convergence of gradient descent}\\
-Figure 5
+\textbf{Problem 3.1.B5: Exploring convergence of gradient descent}
 %\begin{figure}[h]
 %	\centering
 %	\includegraphics[width=8cm]{fig6.pdf}
@@ -480,7 +478,15 @@ Figure 5
 %	\label{fig:5}
 %\end{figure}
 \begin{enumerate}
-	\item Exploring convergence of gradient descent. What are good learning rates and number of iterations for this problem?	
+	\item Exploring convergence of gradient descent. What are good learning rates and number of iterations for this problem?
+\begin{figure}[H]
+	\includegraphics[width=6cm]{fig_0.01.pdf}
+	\includegraphics[width=6cm]{fig_0.03pdf}
+	\includegraphics[width=6cm]{fig_0.1.pdf}
+	\includegraphics[width=6cm]{fig_0.3.pdf}
+	\caption{Adjusting the regularization parameter}
+	\label{fig:5}
+\end{figure}		
 \end{enumerate}
 \textbf{Problem 3.2 Visualizing the dataset}
 \begin{figure}[H]
