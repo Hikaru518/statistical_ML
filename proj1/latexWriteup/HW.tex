@@ -277,7 +277,55 @@ is orthogonal, i.e., $A^T A = 1$.
 	$$A^T A = (I-2u u^T)^T(I-2u u^T) =(I-2u u^T)(I-2u u^T) = I-2u u^T - 2u u^T + 4 u u^T = I$$
 	So $left = right$.	
 \end{proof}
-
+\item Proof the following assertions.
+\begin{enumerate}
+	\item $f(x)=x^3$ is convex for $x\geq0$.
+	\begin{proof}
+		$$f^{'}(x)=3x^2$$
+		$$f^{''}(x)=6x$$
+		for $x\geq0$, $f^{''}(x)\geq0$ always exists. So $f(x)=x^3$ is convex for $x\geq0$
+	\end{proof}
+	\item $f(x_1,x_2) = max(x_1,x_2)$ is convex on $R^2$.
+	\begin{proof}
+		We suppose $a= max(x_1, x_2) = x_{max}$, $b = max(x^{'}_1,x^{'}_2)=x^{'}_{max}$, then 
+		$$left = f(\lambda x_1 + (1-\lambda) x^{'}_1 , \lambda x_2 + (1-\lambda) x^{'}_2)$$
+		$$right = \lambda f(x_1,x_2) + (1 - \lambda) f(x^{'}_1,x^{'}_2)=\lambda x_{max} + (1-\lambda) x^{'}_{max}$$
+		therefore,
+		$$max(\lambda x_1 + (1-\lambda) x^{'}_1 , \lambda x_2 + (1-\lambda) x^{'}_2) \leq \lambda x_{max} + (1-\lambda) x^{'}_{max}$$
+		$f(x_1,x_2) = max(x_1,x_2)$ is convex on $R^2$.
+	\end{proof}
+	\item If univariate functions $f$ f and g are convex on $S$, then $f+g$ is convex on $S$.
+	\begin{proof}
+		We define function $u = f+g$, so we need to prove that
+		$$u(\lambda a + (1-\lambda) b ) \leq \lambda u(a) + (1-\lambda) u(b)$$
+		$$ left = f(\lambda a + (1-\lambda) b)+ g(\lambda a + (1-\lambda) b) \leq \lambda f(a) + (1-\lambda) f(b) +\lambda g(a) + (1-\lambda) g(b)$$
+		the right part of the previous equation can be written as the following 
+		$$right = \lambda[f(a)+g(a)] + (1-\lambda)[f(b)+g(b)]$$
+		$$left \leq right$$
+		therefore function $f+g$ is convex.
+	\end{proof}
+	\item If univariate functions $f$ and $g$ are convex and non-negative on $S$, and have their minimum within $S$ at the same point, then $fg$ is convex on $S$.
+	\begin{proof}
+		We define a function $u=fg$, then 
+		$$u(\lambda a + (1-\lambda) b ) = f(\lambda a + (1-\lambda) b) g(\lambda a + (1-\lambda) b) \leq [\lambda f(a) + (1-\lambda) f(b) +\lambda g(a)] [\lambda g(a) + (1-\lambda) g(b)]\leq \lambda^2 f(a)g(a) + (1-\lambda)^2 f(b)g(b)$$
+		$$ left \leq \lambda f(a)g(a) + (1-\lambda)f(b)g(b) = \lambda u(a) + (1-\lambda)u(b)$$
+		therefore function  $fg$ is convex
+	\end{proof}
+\end{enumerate} 
+\item The entropy of a categorical distribution on $K$ values is defined as 
+$$H(p)=-\sum p_i log(p_i)$$
+Using the method use Lagrange multipliers, find the categorical distribution that has the highest entropy.
+\begin{proof}
+	Since the sum of the probability for all events is 1, we can get constraint condition that $g(P)=1$, where
+	$$g(p_1,p_2, p_3,...,p_n)=\sum_{i=1}^{n} p_i = 1 $$
+	use Lagrange multipliers, for i in range 1 to n,
+	$$\frac{\partial}{\partial p_k}(-\sum_{i=1}^{n}p_i log(p_i) + \lambda(\sum_{i=1}^{n}p_k -1))=0$$
+	compute this equation, we get 
+	$$-(\frac{1}{ln 2 }+ log_2 p_k)+ \lambda = 0$$
+	solving the above equation, we have the constraint condition $\sum p_k =1$, and each $p_i$ is identical. 
+	$$ p_k = \frac{1}{n}$$
+	therefore, we have proved that the Uniform distribution has the highest entropy.
+\end{proof}
 \end{enumerate}
 
 %% part1
@@ -287,7 +335,7 @@ is orthogonal, i.e., $A^T A = 1$.
 	\item Show that $J(\theta)$ can be written in the form
 	$$J(\theta)=(X \theta - y)^T W (X \theta - y)$$
 	for an appropriate diagonal matrix $W$, where $X$ is the $m \times d$ input matrix and y is a $m \times 1$ vector denoting the associated outputs. State clearly what $W$ is.
-\begin{proof}
+\begin{soln}
 	We know that $J(\theta)$ can also be written as 
 	$$J(\theta)=\frac{1}{2} \sum_{i=1}^{m} w^{(i)} (\theta^T x^{(i)} - y^{(i)})^2$$
 	where $x^{(i)}$ is $d \times 1$ vector and $\theta$ is a $d \times 1$ vector. We consider each row of the matrix $X$ as as a $1 \times d$vector $x^i$, so we can write $X = [x^1, x^2, ..., x^m]^T$. So
@@ -295,13 +343,13 @@ is orthogonal, i.e., $A^T A = 1$.
 	=[x^1 \theta - y^1, x^2 \theta - y^2,...,x^m \theta - y^m] W [x^1 \theta - y^1, x^2 \theta - y^2,...,x^m \theta - y^m]^T$$
 	So $W$ is a $m \times m$ diagonal matrix
 	$$W=\left(\begin{matrix}
-	2 w^{(1)} & 0 & 0 & 0 \\ 
-		0 & 2 w^{(2)} & 0 & 0 \\ 
+	\frac{1}{2}w^{(1)} & 0 & 0 & 0 \\ 
+		0 & \frac{1}{2} w^{(2)} & 0 & 0 \\ 
 		0 & 0 & ... & 0  \\ 
-		0 & 0 & 0 & 2 w^{(m)}
+		0 & 0 & 0 & \frac{1}{2} w^{(m)}
 	
 	\end{matrix}\right)$$ 
-\end{proof}
+\end{soln}
 	
 %%part 1 problem 2
 	\item If all the $w^{(i)}$'s are equal to 1, the normal equation to solve for the parameter $\theta$ is:
@@ -333,7 +381,7 @@ is orthogonal, i.e., $A^T A = 1$.
 					\caption{Weighted linear regression using batch gradient descent}  
 					\begin{algorithmic}[1]  
 						\State Calculate $W$ using $w^{(i)}= \exp({-\frac{(x -x^{(i)})^T (x-x^{(i)})}{2 \tau^2}})$;  
-						\State Set learnign rate $\alpha$;
+						\State Set learning rate $\alpha$;
 						
 						\For{enough iterations}
 						\State Update $\theta$ where $\theta_j = \theta_j - \alpha \sum_{i = 1}^{m}w^{(i)}(\theta^Tx^{(i)}-y^{(i)})x_j$ 
