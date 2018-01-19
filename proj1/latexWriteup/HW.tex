@@ -404,34 +404,40 @@ is orthogonal, i.e., $A^T A = 1$.
 
 %%part 2 
 \subsection*{Part 3: Implementing Linear Regression}
-\vspace{4mm}
-%\begin{center}
-%	\includegraphics[height=7cm]{parta1.jpg}\\
-%	\caption{Scatter plot of training data}
-%\end{center}
 \textbf{Problem 3.1.A1 Implementing gradient descent}
-\begin{flushleft}
-	Include Figure 1, Figure 2 and Figure 3
-\end{flushleft}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=8cm]{fig1.pdf}
-	\caption{Scatter plot of training data}
-	\label{fig:1}
-\end{figure}
-\begin{figure}[H]
-	\centering 
-	\includegraphics[width=8cm]{fig2a.pdf}
-	\caption{Fitting a linear model to the data in Figure 1}
-	\label{fig:2}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=8cm]{fig2b.pdf}
-	\caption{Convergence of gradient descent to fit the linear model in Figure 2}
-	\label{fig:3}
-\end{figure}
 \begin{enumerate}
+\item First we visualize the data by plotting the scatter plot of the training data, as shown in figure \ref{fig:1}.  
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=7cm]{fig1.pdf}
+		\caption{Scatter plot of training data}
+		\label{fig:1}
+	\end{figure}
+
+
+
+
+
+
+\item Fit the data using linear regression. The result is shown in \ref{fig:2}. 
+	\begin{figure}[H]
+		\centering 
+		\includegraphics[width=8cm]{fig2a.pdf}
+		\caption{Fitting a linear model to the data in Figure 1}
+		\label{fig:2}
+	\end{figure} 
+
+\item
+	Visualize the cost to see the convergence of gradient descent. The result is shown in figure \ref{fig:3}. 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=7cm]{fig2b.pdf}
+		\caption{Convergence of gradient descent to fit the linear model in Figure 2}
+		\label{fig:3}
+	\end{figure} 
+
+
+
 	\item Qualitative analysis of the linear fit. What can you say about the quality of the linear fit for this data? In your assignment writeup.pdf, explain how you expect the model to perform at the low and high ends of values for LSTAT? How could we improve the quality of the fit?
 	\begin{soln}
 		As we can see in the Figure 2, the linear fit for this data is not that good, especially at the high and low ends. The regression should have some curve at the low and high ends of values for LSTAT, which We can replace x with some non-linear function to model non-linear relationship. Using polynomial regression. 
@@ -449,26 +455,28 @@ is orthogonal, i.e., $A^T A = 1$.
 	\begin{soln} We can see from the data below that the results using different methods are quite similar.
 		The coefficients computed by sklearn:  34.5538408794  and  -0.950049353758. \\
 		The coefficients computed by gradient descent:  34.55363411 and -0.95003694.
-		
-		
 	\end{soln}
-	
+
 \end{enumerate}
-\textbf{Problem 3.1.B2 Loss function and gradient descent}\\
-\begin{figure}[h]
+\textbf{Problem 3.1.B2 Loss function and gradient descent}
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=7cm]{fig5.pdf}
 	\caption{Number of iteration}
 	\label{fig:4}
 \end{figure}
-\\
-\textbf{Problem 3.1.B3 Predicting on unseen data}
+
 \begin{flushleft}
-	For average home in Boston suburbs, we predict a median home value of 225328.063241
+\textbf{Problem 3.1.B3 Predicting on unseen data}
+\end{flushleft}
+\begin{flushleft}
+	For average home in Boston suburbs, we predict a median home value of 225328.063241.
 \end{flushleft}
 \textbf{Problem 3.1.B4: Normal equations (5 points)}
 \begin{flushleft}
-	For average home in Boston suburbs, we predict a median home value of 225328.06324113606. The prediction matches.
+	Predict unseen data using normal equation. For average home in Boston suburbs, we predict a median home value of 225328.06324113606. The prediction matches with the result using gradient descent.
+
+	
 \end{flushleft}
 \textbf{Problem 3.1.B5: Exploring convergence of gradient descent}
 %\begin{figure}[h]
@@ -479,14 +487,22 @@ is orthogonal, i.e., $A^T A = 1$.
 %\end{figure}
 \begin{enumerate}
 	\item Exploring convergence of gradient descent. What are good learning rates and number of iterations for this problem?
-\begin{figure}[H]
-	\includegraphics[width=6cm]{fig_0.01.pdf}
-	\includegraphics[width=6cm]{fig_0.03pdf}
-	\includegraphics[width=6cm]{fig_0.1.pdf}
-	\includegraphics[width=6cm]{fig_0.3.pdf}
-	\caption{Adjusting the regularization parameter}
-	\label{fig:5}
-\end{figure}		
+	\begin{soln}
+		We plotted the convergence figure with different learning rates. We used 0.01, 0.03, 0.1, and 0.3 as our different learning rates. The results are shown in figure \ref{fig:5}. The up left figure is the convergence figure with learning 0.01. And up right for 0.03, bottom left for 0.1, bottom right for 0.3. We choose 0.3 as the best learning rate. The curve converges and it uses the least number of iterations to converge.
+		\begin{minipage}{\linewidth}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=7cm]{fig_rl_e-2.pdf}
+				\includegraphics[width=7cm]{fig_rl_3e-2.pdf}
+				\includegraphics[width=7cm]{fig_rl_e-1.pdf}
+				\includegraphics[width=7cm]{fig_rl_3e-1.pdf}
+				\caption{Adjusting the regularization parameter. The up left figure is the convergence figure with learning 0.01. And up right for 0.03, bottom left for 0.1, bottom right for 0.3.}
+				\label{fig:5}
+			\end{figure} 
+		\end{minipage} 
+		
+	\end{soln}
+	
 \end{enumerate}
 \textbf{Problem 3.2 Visualizing the dataset}
 \begin{figure}[H]
@@ -505,27 +521,34 @@ is orthogonal, i.e., $A^T A = 1$.
 \end{figure}
 
 \textbf{Problem 3.2.A3 Learning curves}
+
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=8cm]{fig8.pdf}
-	\caption{Learning curves}
+	\caption{Learning curves when $\lambda = 1$}
 	\label{fig:8}
 \end{figure}
 
 \textbf{Problem 3.2 Learning polynomial regression models}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=8cm]{fig9.pdf}
-	\caption{Polynomial fit for lambda = 0 with a p=6 order model.}
+	\includegraphics[width=7cm]{fig9.pdf}
+	\caption{Polynomial fit for $\lambda = 0$ with a $p=6$ order model.}
 	\label{fig:9}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=8cm]{fig10.pdf}
-	\caption{Learning curve for lambda = 0.}
+	\includegraphics[width=7cm]{fig10.pdf}
+	\caption{Learning curve for $\lambda$ = 0.}
 	\label{fig:10}
 \end{figure}
-\textbf{Problem 3.2.A4: Adjusting the regularization parameter}
+
+\begin{flushleft}
+	\textbf{Problem 3.2.A4: Adjusting the regularization parameter} 
+\end{flushleft}
+
 \begin{figure}[H]
 	\includegraphics[width=5.5cm]{fig9_1.pdf}
 	\includegraphics[width=5.5cm]{fig9_10.pdf}
@@ -533,13 +556,13 @@ is orthogonal, i.e., $A^T A = 1$.
 	\includegraphics[width=5.5cm]{fig10_1.pdf}
 	\includegraphics[width=5.5cm]{fig10_10.pdf}
 	\includegraphics[width=5.5cm]{fig10_100.pdf}
-	\caption{Adjusting the regularization parameter}
+	\caption{Polynomial figures and learning curves for different regularization parameters. The left column is for $lambda = 1$. The middle column is for $lambda = 10$. The right column is for $lambda = 100$.}
 	\label{fig:11}
 \end{figure}
 \begin{flushleft}
-	Increasing lambda results in less overfitting but also greater bias. The training error and testing error increase as long as the lambda increases.
+	We use different values of $\lambda$ to see the effect of the regularization term. We set $\lambda$ to 1, 10 and 100 and plot the polynomial and learning curves. The results are shown in figure \ref{fig:11}. The left column is for $lambda = 1$. The middle column is for $lambda = 10$. The right column is for $lambda = 100$. As we can see from the figure, increasing lambda results in less overfitting but also greater bias. The training error and testing error increase as long as the lambda increases.
 \end{flushleft}
-\textbf{Problem 3.2.A5: Selecting λ using a validation set}
+\textbf{Problem 3.2.A5: Selecting $\lambda$ using a validation set}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=8cm]{fig10to11.pdf}
@@ -580,18 +603,18 @@ is orthogonal, i.e., $A^T A = 1$.
 			\caption{Select value for $\lambda$ using validation set}
 			\label{fig:select_lambda_1}
 		\end{figure}
-	We can see that when $\lambda = 3$, the validation error is the lowest.
+	We can see that when $\lambda = 3$, the validation error is the lowest. However, I think the regularization term is not helpful here. We can see from the figure that the validation error almost does not change when $\lambda$ changes from $10^{-4}$ to 1. Then it increases. It means the model underfits. In fact, the data has 13 features while there are only 250 training data points. I think no matter how we choose $\lambda$, it does not help to improve the model. Since the data points are not enough.  
 	\end{soln}
 	\item Polynomial regression: quadratic features.
 	\begin{soln}
-		After transform data into polynomial, I repeated the steps above. At first I do $\lambda$ selection using validation set. The $\lambda$ selection result is shown in figure \ref{fig:select_lambda_2}
+		After transform data into polynomial, I repeated the steps above. At first I do $\lambda$ selection using validation set. The $\lambda$ selection result is shown in figure \ref{fig:select_lambda_2}.
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=8cm]{imgs//select_lambda_2.pdf}
 			\caption{Select value for $\lambda$ using validation set for quadratic features}
 			\label{fig:select_lambda_2}
 		\end{figure}
-		We select $\lambda = $. Then we train the model with $\lambda = $, the error is:7.09036691533.
+		We select $\lambda = 10$. Then we train the model with $\lambda = 10$, the error is 7.09036691533.
 	\end{soln}
 	\item Polynomial regression: cubic features.
 	\begin{soln}
@@ -605,9 +628,6 @@ is orthogonal, i.e., $A^T A = 1$.
 		We select $\lambda = 10$. Then we train the model with $\lambda = 10$, the error is:7.09036691533.
 	\end{soln}
 \end{enumerate}
-
-
-
 
 
 \end{document}
