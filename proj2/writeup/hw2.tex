@@ -136,9 +136,9 @@ Due: February 2, 2018 %You should write the date here.
 	
 	\item (True or False) If the training data is linearly separable, then some coefficients $\theta_j$ might become infinite if $\lambda = 0$.
 	\begin{soln}
-		This statement is \textbf{True}. When the plain is
+		This statement is \textbf{True}. When the
+		 maximum likelihood solution occurs, sigmoid function is equal to 0.5, which means that $ \theta_j^T x = 0 $, the magnitude of $\theta_j$ goes to infinity.
 	\end{soln}
-	
 	\item (True of False) The first term of $J(\theta)$ always increases as we increase $\lambda$.
 	\begin{soln}
 		This statement is \textbf{True}. When adding $\lambda$, the cross-entropy loss
@@ -146,6 +146,46 @@ Due: February 2, 2018 %You should write the date here.
 		will become larger to prevent overfitting.
 	\end{soln}
 	
+\end{enumerate}
+
+\subsection*{Part 3: Implementing a k-nearest-neighbor classifier}
+\begin{enumerate}
+	\item Distance matrix computation with two loops.
+	\begin{soln}
+		To solve the problem using two loops, we just compute the distance between the $i^{th}$ test set example and the $j^{th}$ training example, and put that value into $dists(i,j)$.\\
+		1. In the image, each row corresponds to the distances between a specific test example to all the training examples. If a point is bright, it means that the distance is larger than others. So the distinctly bright rows in the image means that: for those test examples, the distance between those and all the training examples are large. Those test samples are more different than others when compared to training examples. Maybe these test examples aren't from any of the classes. Or maybe the test examples are hard to classify.\\
+		2. Similarly, the columns is caused by the fact that, the training examples are different from almost all the test examples.
+	\end{soln}
+	\item Computer majority label.
+	\begin{soln}
+		Result for $k = 1$: Got 137 $/$ 500 correct $=>$ accuracy: 0.274000.\\
+		Result for $k = 5$: Got 139 $/$ 500 correct $=>$ accuracy: 0.278000.\\
+		We can see that there is a slightly better performance for $k = 5$than with $k = 1$.
+		\end{soln}
+	\item Distance matrix computation with one loop.
+	\begin{soln}
+		Compared to two loops, we compute one entire training data set each time instead of a single example. The result shows that our result is the same as that using two loops. Difference was: 0.000000. Good! The distance matrices are the same 
+	\end{soln}
+	\item Distance matrix computation with no loop.
+	\begin{soln}
+		The idea comes for the simple equation $(a-b)^2 = a^2 + b^2 - 2 ab$. For two matrix we can use the similar method, so we need to do one matrix multiplication, and then do two broadcast sums, which are the square of the two matrix.\\
+		The result is same compared to the former methods. We can compare how fast the implementations are. The result is that:\\
+		Two loop version took 884.739000 seconds\\
+		One loop version took 104.597000 seconds\\
+		No loop version took 12.769000 seconds
+	\end{soln}
+	\item Choosing k by cross validation.
+	\begin{figure}[h]
+			\centering
+			\includegraphics[width=11cm]{knn.jpg}
+			\caption{Choosing k by crossvalidation on the CIFAR-10 dataset}
+			\label{fig：1}
+	\end{figure}
+	\begin{soln}
+		by applying cross-validation, we can get a set of accuracies for all folds. And by changing the value of k, we can also have different accuracies which corresponding to different k.\\
+		According to the plot, we choose $k=8$ as our best value for k and then use this value to retrain the model. We get:\\
+		Got 141 $/$ 500 correct $=>$ accuracy: 0.282000. \\It shows that when $k = 8 $ the result is better than other values we have used. 
+	\end{soln}
 \end{enumerate}
 
 \end{document}
