@@ -74,123 +74,79 @@
 
 
 \begin{center}
-{\Large Math 3220-1 \hspace{0.5cm} HW 1}\\
-\textbf{NAME}\\ %You should put your name here
-Due: DATE %You should write the date here.
+{\Large COMP 540 \hspace{0.5cm} Homework 2}\\
+\textbf{Peiguang Wang, Xinran Zhou}\\ %You should put your name here
+Due: February 2, 2018 %You should write the date here.
 \end{center}
 
 \vspace{0.2 cm}
 
-
-\subsection*{Exercises for Section 1.1: Norm and Inner Product}
-
+\subsection*{Part 1: Gradient and Hessian of $NLL(\theta)$ for logistic regression}
 \begin{enumerate}
-\item\label{norms}
-Define the \textdf{$\ell^1$-norm} on $\R^n$ by
-	$$\|x\|_1 = \sum_{i=1}^n |x^i|,$$
-	and define the \textdf{sup-norm} on $\R^n$ by
-	$$\|x\|_\infty = \sup\left\{|x^i|\right\}.$$
-	Show that these satisfy Theorem~1.
-\begin{proof}
-	% WRITE YOUR PROOF HERE.
-\end{proof}
-
-\item	Prove that $\ds \|x\|\leq \sum_{i=1}^n |x^i|$.  In other words, the usual norm is no greater than the $\ell^1$-norm.
-\begin{proof}
-	% WRITE YOUR PROOF HERE.
-\end{proof}
-
-\item	Prove that $\|x-y\| \leq \|x\| + \|y\|$.  (Compare this with part (2) of
-	Theorem~1.)  When does equality hold?
-
-\item	Prove that $\ds \bigg| \, \|x\|-\|y\| \, \bigg| \leq \|x-y\|$.
-
-\item	The quantity $\|y-x\|$ is called the \textdf{distance} between $x$ and
-$y$.  Prove and interpret the ``triangle inequality'':
-$$\|z-x\| \leq \|z-y\| + \|y-x\|.$$
-
-\item\label{caushw}	Let $f$ and $g$ be integrable on $[a,b]$.
-\begin{enumerate}
-	\item	Prove the integral version of the Cauchy-Schwarz inequality:
-	$$\left|\int_a^b fg\right| \leq \left(\int_a^b
-	f^2\right)^{1/2}\left(\int_a^b g^2\right)^{1/2}.$$
-	Hint:  Consider separately the cases $0 = \int_a^b(f-t g)^2$ for
-	some $t\in\R$, and $0<\int_a^b(f-t g)^2$ for all
-	$t\in\R$.
-	\item	If equality holds, must $f=t g$ for some $t\in\R$? 
-	What if $f$ and $g$ are continuous?
-	\item	Show that the Cauchy-Schwarz inequality is a special case of
-	(a).
-
-\end{enumerate}
-
-\item	A linear transformation $T:\R^n\lra\R^n$ is \textdf{norm preserving} if
-$$\|T(x)\|=\|x\|,$$ for all $x\in\R^n$, and \textdf{inner product preserving} if
-$$\ip{Tx}{Ty} = \ip xy,$$ for all $x,y\in\R^n$.
-\begin{enumerate}
-	\item	Prove that $T$  is norm preserving if and only if it is inner
-	product preserving.
+	\item
+	Let $g(z)=\frac{1}{1-e^{-z}}$. Show that $\frac{\partial g(z)}{\partial z}=g(z)(1-g(z)).$
+	\begin{proof}
+		$$\frac{\partial g(z)}{\partial z} = -\frac{e^{-z}}{(1-e^{-z})} = \frac{1}{1+e^{-z}} (1 - \frac{1}{1+e^{-z}}) = g(z)(1-g(z))$$
+	\end{proof}
 	
-	\item	Prove that such a linear transformation is 1-1, and $T^{-1}$ is
-	norm preserving (and inner product preserving).
+	\item
+	Using the previous result and the chain rule of calculus, derive the following expression for the gradient of the negative log likelihood function $NLL(\theta)$ for logistic
+	regression.
+	$$\frac{\partial }{\partial \theta} NNL(\theta)=\sum_{i = 1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})x^{(i)}$$
+	
+	\begin{proof}
+		Let $h_{\theta}$ denote $h_{\theta}(x^{(i)})$. Then the $NLL(\theta)$ is:
+		$$NLL(\theta) = - \frac{1}{m} \sum_{i = 1}^{m} y^{(i)} log(h_{\theta}) + (1-y^{(i)})log(1-h_{\theta})$$
+		Then
+		$$\frac{\partial }{\partial (\theta x) } NNL= - \sum_{i = 1}^{m} y^{(i)} \frac{h_{\theta}(1 - h_{\theta})}{h_{\theta}} + (-1)(1 - y^{(i)} \frac{h_{\theta}(1 - h_{\theta})}{1 - h_{\theta}})$$
+		Simplify the equation above
+		$$\frac{\partial }{\partial (\theta x) } NNL= - \sum_{i = 1}^{m} y^{(i)} (1 - h_{\theta}) + (y^{(i)} - 1) h_{\theta} = -\sum_{i = 1}^{m} y^{(i)} - h_{\theta}$$
+		Derive $\frac{\partial }{\partial (\theta) } NNL $ from $\frac{\partial }{\partial (\theta x) } NNL $:
+		$$\frac{\partial NNL }{\partial \theta } = \frac{\partial NLL }{\partial (\theta x) } \frac{\partial (\theta x)}{\partial \theta } = \sum_{i = 1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})x^{(i)}$$
+		
+	\end{proof}
+	
+	\item 
+	The Hessian or second derivative of the $NLL(\theta)$ can be written as $H=X^{T}SX$ where
+	$$S=diag(h_{\theta}(x^{(1)})(1-h_{\theta}(x^{(1)})),...,h_{\theta}(x^{(m)})(1-h_{\theta}(x^{(m)})))$$
+	
+	Show that $H$ is positive definite. You may assume that $0 < h_{\theta}(x^{(i)}) < 1$, so the elements of $S$ are strictly positive and that $X$ is full rank.
+	
+	\begin{proof}
+		For any given vector $u$, compute $u^THu$:
+		$$u^THu = u^TX^TSXu $$
+		Let vector $v = (v_1, v_2,...v_m)$ denote $X\dot u$. since $X$ is full rank, then $v$ is not a zero vector.
+		$$u^THu = v^TSv = \sum_{i=1}{m} v_i^2S_{ii}$$
+		Since the elements of $S$ are strictly positive, then $u^THu > 0$. So $H$ is positive definite.
+	\end{proof}
+	
 \end{enumerate}
 
-\item\label{bddlin}	If $T:\R^m\lra\R^n$ is a linear transformation, show that there is a
-number $M$ such that $\|T(h)\|\leq M\|h\|$ for all $h\in\R^m$.  Hint: Estimate
-$\|T(h)\|$ in terms of $\|h\|$ and the entries in the matrix for $T$.
-
-\item	If $x,y\in\R^n$, and $z,w\in\R^m$, show that $\ds\ip{(x,z)}{(y,w)} = \ip xy
-+ \ip zw$, and $\ds\|(x,z)\| = \sqrt{\|x\|^2 + \|z\|^2}$.  Note that $(x,z)$ and
-$(y,w)$ denote points in $\R^{n+m}$.
-
-\item	If $x,y\in\R^n$, then $x$ and $y$ are called \textdf{perpendicular} (or
-\textdf{orthogonal}), and we write $x\perp y$, if $\ip xy = 0$.  If $x\perp y$,
-prove that $\|x+y\|^2 = \|x\|^2 + \|y\|^2$.
-
-\end{enumerate}
-
-
-\subsection*{Exercises for Section~1.2: More Topology: Open and Closed Sets in
-$\R^n$}
+\subsection*{Part 2: Properties of L2 regularized logistic regression }
 \begin{enumerate}
-\item\label{topology}	Prove that the union of any (even infinite) number of open sets is open.
- Prove that the intersection of two (and hence of finitely many) open sets is
- open.  Give a counterexample for the intersection of infinitely many open sets.
-
-\item\label{clAB}If $A\subset B\subset\R^n$, prove that
-	$$\cl{A}\subset\cl{B},\quad\mbox{ and }\quad\inter{A}\subset\inter{B}.$$
-
-\item	Prove that if $B$ is an open subset of $A$, then $B\subset \inter(A)$.  Note that this says that $\inter(A)$ is the largest open subset of $A$.
-
-\item	\label{openset}Prove that the $n$-dimensional ball centered at $a$ of radius $r$, 
-	$$\ds B^n(a;r) = \left\{x\in\R^n:\|x-a\|< r\right\}$$ is open. 
-
-\item	Find the interior, exterior, and boundary of the sets:
-	$$B^n = \left\{x\in\R^n : \|x\| \leq 1\right\},$$
-	$$S^{n-1} = \left\{x\in\R^n : \|x\| = 1\right\},$$
-	$$\Q^n = \left\{x\in\R^n : \mbox{ each } x^i\mbox{ is rational}\right\}.$$
-\begin{soln}
-	% Put your answers here.
-\end{soln}
-
-
-\item	If $A\subset[0,1]$ is the union of open intervals $(a_i,b_i)$ such that
-each rational number in $(0,1)$ is contained in some $(a_i,b_i)$, show that
-$\bd A = [0,1] - A$.
-
-\item	If $A$ is a closed set that contains every rational number $r\in[0,1]$,
-show that $[0,1]\subset A$.
-
-\item	Graph generic open balls in $\R^2$ with respect to each of the ``non-Euclidean'' norms, $\|\cdot\|_1$ and $\|\cdot\|_\infty$. 
-What shapes are they?
-\begin{soln}
-	% Put your figure and your write-up here.  See the website on how to
-	% add a figure.
-\end{soln}
-
+	\item (True or False) $J(\theta)$ has multiple locally optimal solutions.
+	\begin{soln}
+		This statement is \textbf{False}. Since $J(\theta)$ is a convex function, it only have one global optimal point.
+	\end{soln}
+	
+	\item (True or False) Let $\theta^{\star} = argmin_{\theta}J(\theta)$ be a global optimum. $\theta^{\star}$ is sparse (has many zero entries).
+	\begin{soln}
+		This statement is \textbf{False}. Since in this regression problem, we use L2 regularization, it won't make $\theta^{\star}$ become sparse. L2 norm will make $\theta$ have small values. If L1 norm is used, then $\theta^{\star}$ will become sparse.
+	\end{soln}
+	
+	\item (True or False) If the training data is linearly separable, then some coefficients $\theta_j$ might become infinite if $\lambda = 0$.
+	\begin{soln}
+		This statement is \textbf{True}. When the plain is
+	\end{soln}
+	
+	\item (True of False) The first term of $J(\theta)$ always increases as we increase $\lambda$.
+	\begin{soln}
+		This statement is \textbf{True}. When adding $\lambda$, the cross-entropy loss
+		$$J = - \frac{1}{m} \sum_{i = 1}^{m} y^{(i)} log(h_{\theta}(x^{(i)})) + (1-y^{(i)})log(1-h_{\theta}(x^{(i)}))$$
+		will become larger to prevent overfitting.
+	\end{soln}
+	
 \end{enumerate}
-
-
 
 \end{document}
 
