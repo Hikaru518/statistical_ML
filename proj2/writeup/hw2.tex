@@ -9,7 +9,15 @@
 \usepackage{amsthm}
 \usepackage{mathrsfs}
 \usepackage{color}
+\usepackage{graphicx}
+\usepackage{float}
 
+%Algorithm packages
+\usepackage{algorithm}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm  
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm  
 %Here I define some theorem styles and shortcut commands for symbols I use often
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
@@ -187,6 +195,116 @@ Due: February 2, 2018 %You should write the date here.
 		Got 141 $/$ 500 correct $=>$ accuracy: 0.282000. \\It shows that when $k = 8 $ the result is better than other values we have used. 
 	\end{soln}
 \end{enumerate}
+
+\subsection*{Part 4: Implementing logistic regression}
+\subsection*{Problem 3A3: Prediction using a logistic regression model}
+The decision boundaries drawn by our logistic regression program and sklearn are shown in figure \ref{fig:boundary}. Left is the linear boundary drawn by our program. Right is the linear boundary drawn by sklearn package. Results of these two methods are similar.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7cm]{imgs//boundary_1.pdf}
+	\includegraphics[width=7cm]{imgs//boundary_sk.pdf}
+	\caption{Linear boundaries drawn by our program and by sklearn. Left is the linear boundary drawn by our program. Right is the linear boundary drawn by sklearn package. Results of these two methods are similar.}
+	\label{fig:boundary}
+\end{figure}
+
+\subsection*{Problem 3B3: Varying $\lambda$}
+Adjusting different $\lambda$, you will see different models. When $\lambda$ is very large, the model becomes underfitting. When $\lambda$ is very small(close to zero), the model becomes overfitting. Figure \ref{fig:Overfit_Underfit} shows results under different $\lambda$. Left shows the underfitting model ($\lambda = 100$). Right shows the overfitting model ($\lambda$ = 1e-6).
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7cm]{imgs//underfitting.pdf}
+	\includegraphics[width=7cm]{imgs//overfitting.pdf}
+	\caption{Linear boundaries drawn by our program and by sklearn. Left shows the underfitting model ($\lambda = 100$). Right shows the overfitting model ($\lambda$ = 1e-6).}
+	\label{fig:Overfit_Underfit}
+\end{figure}
+
+\subsection*{Problem 3B4: Exploring L1 and L2 penalized logistic regression}
+Compare L1 and L2 penalized logistic regression with different $\lambda$. The results are shown in table \ref{tab:L1_L2}
+\begin{table}[H]
+	\centering
+	%\ref{tab:L1_L2}
+	\begin{tabular}{ccccc}
+		\hline 
+		$\lambda$ & L1 Loss & L2 Loss & L1 non-zero $\theta$ & L2 non-zero $\theta$ \\ 
+		\hline 
+		0.01 & 0.2912 & 0.3167 & 19 & 28 \\ 
+		
+		0.1 & 0.3364 & 0.3538 & 14 & 28 \\ 
+		
+		0.3 & 0.3573 & 0.3946 & 8 & 28 \\ 
+		
+		1 & 0.4382 & 0.4684 & 7 & 28 \\ 
+		
+		3 &  0.6137 & 0.5496 & 3 & 28 \\ 
+		
+		10 & 0.6931 & 0.6216 & 0 & 28 \\ 
+		\hline 
+	\end{tabular} 
+	\caption{Loss and number of non-zero parameters when varying $\lambda$}
+	\label{tab:L1_L2}
+\end{table}
+As we can see from the table. We can draw some conclusions:
+\begin{itemize}
+	\item When $\lambda$ increases, the loss of both models increases.
+	\item L1 penalty term makes the model sparse. The larger the $\lambda$ is, the less non-zero parameters in the trained model. However, L2 penalty term doesn't have this property.
+	\item Loss in L1 model increases more quickly than L2 model. 
+\end{itemize}
+
+\subsection*{Fitting regularized logistic regression models (L2 and L1)}
+\begin{enumerate}
+	\item  Do this for every $\lambda$ in the swept range and return the lambda that yields the highest accuracy.
+	\begin{soln}
+		Please see the results in table \ref{tab:results}
+		\begin{table}[H]
+			\centering
+			%\ref{tab:L1_L2}
+			\begin{tabular}{cccc}
+				\hline 
+				Regularization & Feature & Best $\lambda$ & Accuracy \\ 
+				\hline
+				L2 & standard feature & 0.1 &0.9297   \\ 
+				
+				L2 & log-transformed & 0.6 &0.9434   \\ 
+				
+				L2 & binarized feature& 1.6 &0.9284   \\ 
+				
+				L1 & standard feature & 4.6 &0.9219   \\ 
+				
+				L1 & log-transformed & 1.6 &0.9440   \\ 
+				
+				L1 & binarized feature& 3.6 & 0.9258  \\
+				\hline 
+			\end{tabular} 
+			\caption{Loss and number of non-zero parameters when varying $\lambda$}
+			\label{tab:results}
+		\end{table}
+	\end{soln}
+	
+	\item Comment on the model sparsities with L1 and L2 regularization. Which class of models will you recommend for this data set and why?
+	\begin{soln}
+		Please see model sparsity table in table \ref{tab:sparsity}. The results under L2 regularization are always dense. When using L1 regularization, results in log-transformed features are more sparse than standard features. And results with binarized features are more sparse than log-transformed features.
+		\begin{table}[H]
+			\centering
+			%\ref{tab:L1_L2}
+			\begin{tabular}{cccc}
+				\hline 
+				& \# of zeros (std) & \# of zeros (log) & \# of zeros(bin) \\ 
+				\hline 
+				L1 regularization & 4 & 15 & 20 \\ 
+				
+				L2 regularization & 0 & 0 & 0 \\ 
+				\hline 
+			\end{tabular} 
+			\caption{Loss and number of non-zero parameters when varying $\lambda$}
+			\label{tab:sparsity}
+		\end{table}
+		
+		\noindent
+		I will recommend the model using log transformed feature with L1 regularization($\lambda = 1.6$). Because the accuracy is the highest. And also has many zero parameters and therefore the model is less complex. 
+	\end{soln}
+	
+\end{enumerate}
+
+
 
 \end{document}
 
