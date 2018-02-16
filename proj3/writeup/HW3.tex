@@ -82,9 +82,9 @@
 
 
 \begin{center}
-{\Large COMP 540 \hspace{0.5cm} HW 3}\\
+{\Large COMP 540 \hspace{0.5cm} Homework 3}\\
 \textbf{Peiguang Wang, Xinran Zhou}\\ %You should put your name here
-Due: 1/18/2018 %You should write the date here.
+Due: 2/16/2018 %You should write the date here.
 \end{center}
 
 \vspace{0.2 cm}
@@ -181,6 +181,11 @@ Due: 1/18/2018 %You should write the date here.
 	As  $\frac{\lambda_r}{\lambda_s}$ increases, the cost of rejection increases. And when $\frac{\lambda_r}{\lambda_s} = 1$ we would never reject.
 \end{enumerate}
 \subsection*{4: Kernelizing k-nearest neighbors  }
+\begin{soln}
+	In knn classifier, we just need to compute the L2 distance of a test vector to all the training points. It can be kernelized in this form:
+	$$||x_i - x_j|| = <x_i,x_i> + <x_j,x_j> - 2<x_i,x_j>$$
+	where $<>$ denote dot product. So computing L2 distance can be turned into a 3 kenerlized computations.
+\end{soln}
 \subsection*{5: Constructing kernels  }
 \begin{enumerate}
 	\item $k(x,x^{'}) = C k_1(x,x^{'})$
@@ -214,7 +219,7 @@ Due: 1/18/2018 %You should write the date here.
 		\caption{confusion matrix of ova}
 		\label{fig:1}
 	\end{figure}
-	\item Visualizing the learned parameter matrix
+	\item Visualizing the learned parameter matrix.The visualized coefficients are shown in \ref{fig:2}.
 	
 	\begin{figure}[H]
 		\centering
@@ -222,6 +227,7 @@ Due: 1/18/2018 %You should write the date here.
 		\caption{learned one-vs-all classifier visualization}
 		\label{fig:2}
 	\end{figure}
+The visualized coefficients are shown in \ref{fig:3}.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=8cm]{ova_2.png}
@@ -234,18 +240,8 @@ Due: 1/18/2018 %You should write the date here.
 \begin{enumerate}
 \item loss function for softmax regression (naive version)
 \begin{soln}
-	When implemented in naive version, the softmax regression results are shown in below. Note it took 14.744 seconds to compute the loss. \\
-	\textsl{numerical: -3.709464 analytic: -3.709464, relative error: 8.806310e-09 \\
-	numerical: -0.474544 analytic: -0.474544, relative error: 5.447825e-08 \\
-	numerical: 2.137769 analytic: 2.137769, relative error: 1.418326e-08 \\
-	numerical: 2.231634 analytic: 2.231634, relative error: 5.038103e-08 \\
-	numerical: 0.342416 analytic: 0.342416, relative error: 3.329287e-08 \\
-	numerical: 2.323395 analytic: 2.323395, relative error: 1.629854e-08 \\
-	numerical: -0.570532 analytic: -0.570532, relative error: 2.058362e-08 \\
-	numerical: 1.082908 analytic: 1.082908, relative error: 5.096985e-10 \\
-	numerical: 0.440409 analytic: 0.440409, relative error: 3.809953e-08 \\
-	numerical: 2.232702 analytic: 2.232702, relative error: 2.706612e-08 \\
-	naive loss: 2.352202e+00 computed in 14.744000s}
+	When implemented in naive version, the softmax regression results are shown in below. \\
+	naive loss: 2.352202e+00 computed in 14.744000s
 \end{soln}
 \item loss function for softmax regression (vectorized version)
 \begin{soln}
@@ -271,7 +267,6 @@ Due: 1/18/2018 %You should write the date here.
 	Using the selected best softmax model on testing dataset. The program result is:
 	
 	\textsl{softmax on raw pixels final test set accuracy: 0.405100 }
-	
 	Visualize the coefficients in Figure \ref{fig:cofficient}.  
 	\begin{figure}[H]
 		\centering
