@@ -64,25 +64,19 @@ def softmax_loss_vectorized(theta, X, y, reg):
   # here, it is easy to run into numeric instability. Don't forget the        #
   # regularization term!                                                      #
   #############################################################################
-    h = np.dot(theta.T, X.T)
-    h_max = np.max(h,axis = 0)
-    h_new = h-h_max
-    h_exp = np.exp(h_new)
-    p_all = np.sum(h_exp,axis = 0)
-    theta_new = theta[:,y]
-    #p_one = np.sum(np.multiply(theta_new, X.T)/float(m))
-    p_one = np.sum(np.multiply(theta_new, X.T)/1.0/m)
-    #J = p_one - np.sum((np.log(p_all)+h_max)/float(m))
-    J = p_one - np.sum((np.log(p_all)+h_max)/1.0/m)
-    #J = -1.0 * J + 0.5* reg * np.sum(theta**2) / float(m)
-    J = -1.0 * J + 0.5* reg * np.sum(theta**2) / 1.0/m
-    n = np.divide(h_exp, p_all)
-    n=n.T
-    n[np.arange(m),y] += -1.0
-    #grad = np.dot(X.T, n) / float(m) + reg *theta / float(m)
-    grad = np.dot(X.T, n) / 1.0/m + reg *theta / 1.0/m
+    
+    h = np.dot(X, theta)
+    h = h - h.max(axis=1).reshape((-1,1))
+    ex = np.exp(h)
+    s = ex.sum(axis = 1).reshape((-1,1))
+    I = np.zeros(ex.shape)+np.arange(10);
+    I = (I == y.reshape((-1,1)))*1
+    J = np.log((ex/s)**I).sum()/(-m)+reg*np.sum(theta**2)/(2*m)
+    grad = np.dot(X.T,I-ex/s)/(-m) + reg*theta/m    
                        
-                       
+    
+    
+    
                    
 
   #############################################################################

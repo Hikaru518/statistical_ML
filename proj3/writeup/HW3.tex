@@ -194,10 +194,68 @@ Due: 1/18/2018 %You should write the date here.
 	\item $(x,x^{'}) = k_1(x,x^{'}) + k_1(x,x^{'})$
 	\begin{soln}
 		Because $k_1(x,x^{'}$ and $k_2(x,x^{'}$ both are valid kernels, so by Mercer's theorem they both satisfy
-		$$\int_d k(x,x^{'}f(x)f(x^{'})\geq0$$
-		then
+		$$\int_d k(x,x^{'})f(x)f(x^{'})\geq0$$
+		then $k(x,x^{'}) = \Phi(x)^T \Phi(x^{'})$ exists.
+		So 
+		$$k_1(x,x^{'} + k_2(x,x^{'}) = \int_d k_1(x,x^{'}f(x)f(x^{'})) + \int_d k_2(x,x^{'}f(x)f(x^{'}))$$
+		Because $\int_d k_1(x,x^{'}f(x)f(x^{'})) > 0 $ and $\int_d k_2(x,x^{'}f(x)f(x^{'})) > 0 $, so
+		$$k_1(x,x^{'} + k_2(x,x^{'}) \ge 0$$
 	\end{soln}
 \end{enumerate}
+\subsection*{7: Softmax Regression}
+\begin{enumerate}
+\item loss function for softmax regression (naive version)
+\begin{soln}
+	When implemented in naive version, the softmax regression results are shown in below. Note it took 14.744 seconds to compute the loss. \\
+	\textsl{numerical: -3.709464 analytic: -3.709464, relative error: 8.806310e-09 \\
+	numerical: -0.474544 analytic: -0.474544, relative error: 5.447825e-08 \\
+	numerical: 2.137769 analytic: 2.137769, relative error: 1.418326e-08 \\
+	numerical: 2.231634 analytic: 2.231634, relative error: 5.038103e-08 \\
+	numerical: 0.342416 analytic: 0.342416, relative error: 3.329287e-08 \\
+	numerical: 2.323395 analytic: 2.323395, relative error: 1.629854e-08 \\
+	numerical: -0.570532 analytic: -0.570532, relative error: 2.058362e-08 \\
+	numerical: 1.082908 analytic: 1.082908, relative error: 5.096985e-10 \\
+	numerical: 0.440409 analytic: 0.440409, relative error: 3.809953e-08 \\
+	numerical: 2.232702 analytic: 2.232702, relative error: 2.706612e-08 \\
+	naive loss: 2.352202e+00 computed in 14.744000s}
+\end{soln}
+\item loss function for softmax regression (vectorized version)
+\begin{soln}
+	When implemented in naive version, the softmax regression results are shown in below. Note it took 0.483000 seconds to compute the loss. \\
+	\textsl{
+	vectorized loss: 2.352202e+00 computed in 0.483000s \\
+	Loss difference: 0.000000 \\
+	Gradient difference: 0.000000}
+\end{soln}
+\item Compare naive version and vectorized version
+
+\begin{soln}
+	It took 14.744000s for naive version to compute the result; and 0.483000 for vectorized version. The vectorized version is much faster than the naive version.
+\end{soln}
+
+\item Using a validation set to select regularization lambda and learning rate for gradient descent.
+\begin{soln}
+	We choose mini patch size 400, and set the number of iteration to 4000. The program result is:\textsl{Best validation accuracy achieved during cross-validation: 0.418000}
+\end{soln}
+
+\item Evaluating the best softmax classifier on the test set and visualizing the coefficients
+\begin{soln}
+	Using the selected best softmax model on testing dataset. The program result is:
+	
+	\textsl{softmax on raw pixels final test set accuracy: 0.405100 }
+	
+	Visualize the coefficients in Figure \ref{fig:cofficient}.  
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=10cm]{cofficients.pdf}
+		\caption{Visualization of the cofficients}
+		\label{fig:cofficient}
+	\end{figure}
+
+\end{soln}
+
+\end{enumerate}
+
 
 \end{document}
 
