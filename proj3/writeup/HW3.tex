@@ -167,6 +167,17 @@ Due: 1/18/2018 %You should write the date here.
 	\end{soln}
 \end{enumerate}
 \subsection*{3: Reject option in classifiers  }
+\begin{enumerate}
+	\item part 1
+	\begin{soln}
+		The loss of choosing a class j is 
+		$$loss = \lambda_s (1 - P(y = j | x))$$
+		then
+		$$\lambda_s(1 - P(y = j | x))\leq \lambda_r$$
+		so
+		$$ P(y = j | x)\geq 1- \frac{\lambda_r}{\lambda_s}$$
+	\end{soln}
+\end{enumerate}
 \subsection*{4: Kernelizing k-nearest neighbors  }
 \subsection*{5: Constructing kernels  }
 \begin{enumerate}
@@ -174,6 +185,17 @@ Due: 1/18/2018 %You should write the date here.
 	\begin{soln}
 		$$C k_1(x,x^{'}) = C \Phi_1(x)^T \Phi_1(x^{'}) = (\sqrt{C}\Phi_1(x)^T)(\sqrt{C}\Phi_1(x^{'})^T)$$
 		if $C\geq0$ then $k(x,x^{'})$ is a valid kernel.
+	\end{soln}
+	\item $k(x,x^{'}) = f(x) k_1(x,x^{'}) f(x^{'})$
+	\begin{soln}
+		$$f(x) k_1(x,x^{'})f(x^{'}) = <f(x)\Phi_1(x),  f(x^{'})\Phi_1(x^{'})>$$
+		since it satisfy the Mercer's theorem, $k(x,x^{'})$ is valid
+	\end{soln} 
+	\item $(x,x^{'}) = k_1(x,x^{'}) + k_1(x,x^{'})$
+	\begin{soln}
+		Because $k_1(x,x^{'}$ and $k_2(x,x^{'}$ both are valid kernels, so by Mercer's theorem they both satisfy
+		$$\int_d k(x,x^{'}f(x)f(x^{'})\geq0$$
+		then
 	\end{soln}
 \end{enumerate}
 

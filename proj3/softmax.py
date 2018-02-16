@@ -70,12 +70,17 @@ def softmax_loss_vectorized(theta, X, y, reg):
     h_exp = np.exp(h_new)
     p_all = np.sum(h_exp,axis = 0)
     theta_new = theta[:,y]
-    p_one = np.sum(np.multiply(theta_new, X.T)/float(m))
-    J = p_one - np.sum((np.log(p_all)+h_max)/float(m))
-    J = -1.0 * J + 0.5* reg * np.sum(theta**2) / float(m)
-    n = np.divide(h_exp, p_all).T
+    #p_one = np.sum(np.multiply(theta_new, X.T)/float(m))
+    p_one = np.sum(np.multiply(theta_new, X.T)/1.0/m)
+    #J = p_one - np.sum((np.log(p_all)+h_max)/float(m))
+    J = p_one - np.sum((np.log(p_all)+h_max)/1.0/m)
+    #J = -1.0 * J + 0.5* reg * np.sum(theta**2) / float(m)
+    J = -1.0 * J + 0.5* reg * np.sum(theta**2) / 1.0/m
+    n = np.divide(h_exp, p_all)
+    n=n.T
     n[np.arange(m),y] += -1.0
-    grad = np.dot(X.T, n) / float(m) + reg *theta / float(m)
+    #grad = np.dot(X.T, n) / float(m) + reg *theta / float(m)
+    grad = np.dot(X.T, n) / 1.0/m + reg *theta / 1.0/m
                        
                        
                    

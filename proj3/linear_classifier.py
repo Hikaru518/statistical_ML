@@ -3,12 +3,12 @@ from softmax import *
 
 class LinearClassifier:
 
-  def __init__(self):
-    self.theta = None
+    def __init__(self):
+        self.theta = None
 
-  def train(self, X, y, learning_rate=1e-3, reg=1e-5, num_iters=100,
-            batch_size=200, verbose=False):
-    """
+    def train(self, X, y, learning_rate=1e-3, reg=1e-5, num_iters=100,
+        batch_size=200, verbose=False):
+        """
     Train this linear classifier using stochastic gradient descent.
 
     Inputs:
@@ -23,19 +23,18 @@ class LinearClassifier:
 
     Outputs:
     A list containing the value of the loss function at each training iteration.
-    """
+        """
+        num_train,dim = X.shape
+        num_classes = np.max(y) + 1 # assume y takes values 0...K-1 where K is number of classes
 
-    num_train,dim = X.shape
-    num_classes = np.max(y) + 1 # assume y takes values 0...K-1 where K is number of classes
-
-    if self.theta is None:
-      self.theta = np.random.randn(dim,num_classes) * 0.001
+        if self.theta is None:
+            self.theta = np.random.randn(dim,num_classes) * 0.001
 
     # Run stochastic gradient descent to optimize theta
-    loss_history = []
-    for it in xrange(num_iters):
-      X_batch = np.zeros((batch_size,dim))
-      y_batch = np.zeros((batch_size,))
+        loss_history = []
+        for it in xrange(num_iters):
+            X_batch = np.zeros((batch_size,dim))
+            y_batch = np.zeros((batch_size,))
 
       #########################################################################
       # TODO:                                                                 #
@@ -49,16 +48,18 @@ class LinearClassifier:
       # replacement is faster than sampling without replacement.              #
       # About 3 lines of code expected                                        #
       #########################################################################
-
-
+            a = np.random.choice(num_train, batch_size)
+            X_batch = X[a,:]
+            y_batch = y[a]
+           
 
       #########################################################################
       #                       END OF YOUR CODE                                #
       #########################################################################
 
       # evaluate loss and gradient
-      loss, grad = self.loss(X_batch, y_batch, reg)
-      loss_history.append(loss)
+            loss, grad = self.loss(X_batch, y_batch, reg)
+            loss_history.append(loss)
 
       # perform parameter update
       #########################################################################
@@ -66,20 +67,20 @@ class LinearClassifier:
       # Update the weights using the gradient and the learning rate.          #
       # Hint: one line of code expected                                       #
       #########################################################################
-      
+            self.theta -= learning_rate* grad * loss
 
       #########################################################################
       #                       END OF YOUR CODE                                #
       #########################################################################
 
-      if verbose and it % 100 == 0:
-        print 'iteration %d / %d: loss %f' % (it, num_iters, loss)
+            if verbose and it % 100 == 0:
+                print 'iteration %d / %d: loss %f' % (it, num_iters, loss)
 
-    return loss_history
+        return loss_history
 
 
-  def predict(self, X):
-    """
+    def predict(self, X):
+        """
     Use the trained weights of this linear classifier to predict labels for
     data points.
 
@@ -90,22 +91,23 @@ class LinearClassifier:
     - y_pred: Predicted labels for the data in X. y_pred is a 1-dimensional
       array of length m, and each element is an integer giving the predicted
       class.
-    """
-    y_pred = np.zeros(X.shape[0])
+        """
+        y_pred = np.zeros(X.shape[0])
     ###########################################################################
     # TODO:                                                                   #
     # Implement this method. Store the predicted labels in y_pred.            #
     # 1-2 lines of code expected.                                             #
     ###########################################################################
-
+        score = np.dot(X, self.theta)
+        y_pred = np.argmax(score, axis = 1)
 
     ###########################################################################
     #                           END OF YOUR CODE                              #
     ###########################################################################
-    return y_pred
+        return y_pred
   
-  def loss(self, X_batch, y_batch, reg):
-    """
+    def loss(self, X_batch, y_batch, reg):
+        """
     Compute the loss function and its derivative. 
     Subclasses will override this.
 
@@ -117,14 +119,14 @@ class LinearClassifier:
     Returns: A tuple containing:
     - loss as a single float
     - gradient with respect to self.W; an array of the same shape as W
-    """
-    pass
+        """
+        return softmax_loss_vectorized(self.theta, X_batch, y_batch, reg)
 
 
 
 class Softmax(LinearClassifier):
-  """ A subclass that uses the Softmax + Cross-entropy loss function """
+    """ A subclass that uses the Softmax + Cross-entropy loss function """
 
-  def loss(self, X_batch, y_batch, reg):
-    return softmax_loss_vectorized(self.theta, X_batch, y_batch, reg)
+    def loss(self, X_batch, y_batch, reg):
+        return softmax_loss_vectorized(self.theta, X_batch, y_batch, reg)
 
