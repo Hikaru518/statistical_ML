@@ -181,10 +181,14 @@ class FullyConnectedNet(object):
         ############################################################################
         # about 4 lines of code
         
-        self.params['theta1']   = np.random.normal(0,weight_scale,(input_dim,hidden_dims[0]))
+        self.params['theta1']   = weight_scale * np.random.randn(input_dim, hidden_dims[0])
         self.params['theta1_0'] = np.zeros(hidden_dims[0])
-        for i in range(1,)
-        
+        N = len(hidden_dims)
+        for i in range(1,N):
+            self.params['theta'+str(i+1)] = weight_scale * np.random.randn(hidden_dims[i-1], hidden_dims[i])
+            self.params['theta'+str(i+1)+'_0'] = np.zeros(hidden_dims[i])
+        self.params['theta'+str(1+N)] = weight_scale * np.random.randn(hidden_dims[N-1], num_classes)
+        self.params['theta'+str(1+N)+'_0'] = np.zeros(num_classes)
 
 
         ############################################################################
@@ -230,8 +234,27 @@ class FullyConnectedNet(object):
         # dropout forward pass.                                                    #
         #                                                                          #
         ############################################################################
+        
+        #N =  self.num_layers - 2
+        #caches={}
+        #temp_i,caches[0]=affine_relu_forward(X,self.params['theta1'],self.params['theta1_0'])
 
-        pass
+        #for i in range(1,N):
+        #    temp_i,caches[i]=affine_relu_forward(temp_i,self.params['theta'+str(i+1)],self.params['theta'+str(i+1)+'_0'])    
+        #scores,caches[N]=affine_forward(temp_i,self.params['theta'+str(N+1)],self.params['theta'+str(N+1)+'_0'])
+        
+        N =  self.num_layers - 2
+        caches = range(N+1)
+        caches={}
+        ai,caches[0] = affine_relu_forward(X,self.params['theta1'],self.params['theta1_0'])
+        
+        for i in range(1,N):
+            ai,cache=affine_relu_forward(ai,self.params['theta'+str(i+1)],self.params['theta'+str(i+1)+'_0'])    
+            caches[i]=cache
+
+        scores,cache=affine_forward(ai,self.params['theta'+str(N+1)],self.params['theta'+str(N+1)+'_0'])
+        caches[N]=cache
+        
         ############################################################################
         #                             END OF YOUR CODE                             #
         ############################################################################
@@ -252,9 +275,25 @@ class FullyConnectedNet(object):
         # automated tests, make sure that your L2 regularization includes a factor #
         # of 0.5 to simplify the expression for the gradient.                      #
         ############################################################################
+        
+        N =  self.num_layers - 2
+        
+        #loss,d_loss=softmax_loss(scores, y)
+        #loss=loss+0.5*self.reg*(np.sum(self.params['theta'+str(N+1)]**2))
+        #d_temp,grads['theta'+str(N+1)],grads['theta'+str(N+1)+'_0']=affine_backward(d_loss,caches[N])
+        #for i in range(N,0,-1):
+        #    loss=loss+0.5*self.reg*(np.sum(self.params['theta'+str(i)]**2))
+        #    d_temp,grads['theta'+str(i)],grads['theta'+str(i)+'_0']=affine_relu_backward(d_temp,caches[i-1])
+        #    grads['theta'+str(i)]=grads['theta'+str(i)]+self.reg*self.params['theta'+str(i)]
+        
+        loss, d_loss=softmax_loss(scores, y)
+        loss = loss+0.5*self.reg*(np.sum(self.params['theta'+str(self.num_layers-1)]**2))
+        d_out,grads['theta'+str(N+1)],grads['theta'+str(N+1)+'_0']=affine_backward(d_loss,caches[N])
+        for i in range(N,0,-1):
+            loss=loss+0.5*self.reg*(np.sum(self.params['theta'+str(i)]**2))
+            d_out,grads['theta'+str(i)],grads['theta'+str(i)+'_0']=affine_relu_backward(d_out,caches[i-1])
+            grads['theta'+str(i)]=grads['theta'+str(i)]+self.reg*self.params['theta'+str(i)]
 
-
-        pass
         ############################################################################
         #                             END OF YOUR CODE                             #
         ############################################################################
