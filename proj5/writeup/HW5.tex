@@ -183,6 +183,36 @@ Due: 3/5/2018 %You should write the date here.
 	\end{soln}
 	\end{enumerate}
 
+\subsection*{4: Fully connected neural networks and convolutional neural networks  }
+\begin{enumerate}
+	\item \textbf{Problem 4.1.7: Multilayer network} \\
+	Do the initial losses seem reasonable? 
+	\begin{soln}
+	The initial loss computed by program is: 
+	
+	\textit{Running check with reg =  0 \\Initial loss:  2.30808329607 \\Running check with reg =  3.14 \\Initial loss:  6.8866804054 	}
+	
+	It is reasonable. When reg = 0, Initial loss = $ln(num of classes) = ln(10) = 2.3$. This result corresponds with the computed value. And when reg = 3.4, loss with become larger than loss without regularization.
+	
+	\end{soln}
+	\item \textbf{Problem 4.1.7: Multilayer network} \\
+	Did you notice anything	about the comparative difficulty of training the three-layer net vs training the five layer net? 
+	\begin{soln}
+        The 5-layer network is deeper than a 3-layer network, so the backward spread of the gradient will be more difficult(since the gradient will become smaller in deeper layers). So training five-layer net need bigger weight scale in initialization stage. And the learning rate should be higher.
+	\end{soln}
+
+	\item \textbf{Problem 4.2.4: Experimenting with fully connected nets with dropout} \\
+	Comment on the shape of the training and validation	accuracy plots for networks trained with and without dropout.
+	
+	Learning history is shown in Figure. \ref{fig:dropout}. We can see from the figure  that using dropout can prevent overfitting and can make the model better when predicting unseen data. When using dropout, training accuracy is lower however validation accuracy is higher. 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{dropoutVSnondropout.png}
+		\caption{learning history with/without dropout}
+		\label{fig:dropout}
+	\end{figure}
+\end{enumerate}
+
 \end{document}
 
 
