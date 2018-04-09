@@ -84,7 +84,7 @@
 \begin{center}
 {\Large COMP 540 \hspace{0.5cm} HW 5}\\
 \textbf{Peiguang Wang, Xinran Zhou}\\ %You should put your name here
-Due: 3/5/2018 %You should write the date here.
+Due: 04/05/2018 %You should write the date here.
 \end{center}
 
 \vspace{0.2 cm}
@@ -147,11 +147,18 @@ Due: 3/5/2018 %You should write the date here.
 			\textbf{Gini Index:}
 			$$Gini(A) = 0.5(1-0.75^2 - 0.25^2) + 0.25(1-0.25^2 - 0.75^2) = 0.375$$
 			$$Gini(B) = 0.75(1-\frac{2}{3}^2 - \frac{1}{3}^2)+0.25(1-1-0)=\frac{1}{3}$$
-			Among these three cost calculations, the entropy is the preferred split since the difference between A and B in this cost calculation is the biggest.
+			Among these three cost calculations, the entropy is the preferred split since the difference between A and B in entropy calculation is the highest.
 		\end{soln}
 		\item Can the misclassification rate ever increase when splitting on a feature? If so, give an example. If not, give a proof.
 		\begin{soln}
-			No, the misclassification rate will not increase when splitting on a feature. 
+			No, the misclassification rate will not increase when splitting on a feature.
+			If we suppose that one node has $n_p$ positive and $n_n$ negative examples, then the misclassification rate for this node is 
+			$$err_{node} = \frac{min(n_p + n_n)}{n_p+n_n}$$
+			when split this node using a feature into two children nodes, each has $(n_{p1},n_{n2})$ and $(n_{p2},n_{p2})$ examples, then the misclassification rate for all children nodes is
+			$$err_{children} = \frac{min(n_{p1},n_{n2})+min(n_{p2},n_{n2})}{n_p+n_n}$$
+			since $n_{p1} + n_{p2} = n_p$and $n_{n1} +n_{n2} = n_n$, so 
+			$$min(n_{p1},n_{n2})+min(n_{p2},n_{n2})\leq min(n_{p1},n_{n2})$$
+			therefore we can get $err_{children} \leq err_{node}$. The misclassification rate will not increase when splitting on a feature.
 		\end{soln}
 	\end{enumerate}
 \subsection*{3: Bagging }
@@ -179,7 +186,7 @@ Due: 3/5/2018 %You should write the date here.
 		$$\frac{1}{L}\sum_{l = 1}^{L}\epsilon_l^2 \geq \epsilon_{bag}^2$$
 		therefore
 		$$E[\frac{1}{L}\sum_{l = 1}^{L}\epsilon_l^2] \geq E[\epsilon_{bag}^2]$$
-		take the expectation on both sides $E_av \geq E_bag $
+		take the expectation on both sides $E_{av} \geq E_{bag} $
 	\end{soln}
 	\end{enumerate}
 
