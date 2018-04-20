@@ -1,0 +1,147 @@
+\documentclass[]{book}
+
+%These tell TeX which packages to use.
+\usepackage{array,epsfig}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsxtra}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+
+%Algorithm packages
+\usepackage{algorithm}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm  
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm  
+%Here I define some theorem styles and shortcut commands for symbols I use often
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem*{rmk}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem*{joke}{Joke}
+\newtheorem{ex}{Example}
+\newtheorem*{soln}{Solution}
+\newtheorem{prop}{Proposition}
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\graph}{\mathrm{graph}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\Z}{\bb{Z}}
+\newcommand{\Q}{\bb{Q}}
+\newcommand{\R}{\bb{R}}
+\newcommand{\C}{\bb{C}}
+\newcommand{\N}{\bb{N}}
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\m}{\mathbf{m}}
+\newcommand{\MM}{\mathscr{M}}
+\newcommand{\HH}{\mathscr{H}}
+\newcommand{\Om}{\Omega}
+\newcommand{\Ho}{\in\HH(\Om)}
+\newcommand{\bd}{\partial}
+\newcommand{\del}{\partial}
+\newcommand{\bardel}{\overline\partial}
+\newcommand{\textdf}[1]{\textbf{\textsf{#1}}\index{#1}}
+\newcommand{\img}{\mathrm{img}}
+\newcommand{\ip}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\inter}[1]{\mathrm{int}{#1}}
+\newcommand{\exter}[1]{\mathrm{ext}{#1}}
+\newcommand{\cl}[1]{\mathrm{cl}{#1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\vol}{\mathrm{vol}}
+\newcommand{\cnt}{\mathrm{ct}}
+\newcommand{\osc}{\mathrm{osc}}
+\newcommand{\LL}{\mathbf{L}}
+\newcommand{\UU}{\mathbf{U}}
+\newcommand{\support}{\mathrm{support}}
+\newcommand{\AND}{\;\wedge\;}
+\newcommand{\OR}{\;\vee\;}
+\newcommand{\Oset}{\varnothing}
+\newcommand{\st}{\ni}
+\newcommand{\wh}{\widehat}
+
+%Pagination stuff.
+\setlength{\topmargin}{-.3 in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{9.in}
+\setlength{\textwidth}{6.5in}
+\pagestyle{empty}
+
+
+
+\begin{document}
+
+
+\begin{center}
+{\Large COMP 540 \hspace{0.5cm} HW 6}\\
+\textbf{Peiguang Wang, Xinran Zhou}\\ %You should put your name here
+Due: 4/20/2018 %You should write the date here.
+\end{center}
+
+\vspace{0.2 cm}
+
+
+\subsection*{1: Hidden Markov Models}
+\begin{enumerate}
+	\item Identifying the set of observables $O$, the set of hidden states $S$ and th parameters $\lambda = [\pi, a, b]$, the initial state distribution, the transition matrix and the emission matrix. Draw the corresponding graphical model.
+	\begin{soln}
+		The set of observables is $O = \{low, medium, high\}$. The set of hidden states is $S = \{healthy, unhealthy\}$
+		
+		The parameters $\lambda$, here we use H and N to represent hidden states, and L, M and H to represent observables low, medium and high.
+		
+		The transition matrix $a$:
+		\begin{tabular}{ccc}
+			\toprule
+			State&H&N\\
+			\midrule
+			H&0.8&0.2\\
+			N&0.2&0.8\\
+			\bottomrule
+		\end{tabular}
+	
+		The emission matrix $b$: 
+		\begin{tabular}{cccc}
+			\toprule
+			O/S&L&M&H\\
+			\midrule
+			H&0.5&0.3&0.2\\
+			N&0.3&0.3&0.4\\
+			\bottomrule
+		\end{tabular} 
+		
+		The initial state distribution $\pi = [0.5,0.5]$
+		
+		
+	\end{soln}
+	\item Calculate the probability that the patient is healthy at $ t=2$ given that the test readings at $t = 1$ and $t = 2 $ are both low.
+	\begin{soln}
+		What we want to find is $p(x_2|L,L)$, so we can use filtering to calculate that. When $t = 1$
+		$$\alpha_1(H) = b_H(e_1) \sum_{i =0}^{n}\alpha_0(i) a_{iH} = 0.5\times0.5 = 0.25$$
+		$$\alpha_1(N) = 0.3 \times 0.5 = 0.15$$
+		also we can calculate when $t = 2$
+		$$\alpha_2(H) = 0.5 \times 0.23 = 0.115$$
+		$$\alpha_2(N) = 0.3 \times 0.17 = 0.051$$
+		so the probability that the patient is healthy at $ t=2$ given that the test readings at $t = 1$ and $t = 2 $ is that 
+		$$p(x_2 = H|L,L) = \frac{0.115}{0.115+0.051} = 0.693$$
+		
+	\end{soln}
+	\item What is the most likely state sequence for $t = 0,1,2$ given the evidence from the previous subpart?
+	\begin{soln}
+		H-H-H
+	\end{soln}
+\end{enumerate}
+	
+
+\end{document}
+
+
